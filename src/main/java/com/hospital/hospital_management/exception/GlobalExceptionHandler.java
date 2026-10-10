@@ -1,0 +1,29 @@
+package com.hospital.hospital_management.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(PatientNotFoundException.class)
+    public ResponseEntity<String> handlePatientNotFound(
+            PatientNotFoundException exception) {
+
+        return new ResponseEntity<>(
+                exception.getMessage(),
+                HttpStatus.NOT_FOUND);
+    }
+    
+    @ExceptionHandler(DoctorNotFoundException.class)
+    public ResponseEntity<String> handleDoctorNotFound(DoctorNotFoundException exception) {
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+    }
+    
+    @ExceptionHandler(AppointmentNotFoundException.class)
+    public ResponseEntity<String> handleAppointmentNotFound(AppointmentNotFoundException exception) {
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+    }
+}

@@ -1,0 +1,7217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:wght@500;600&display=swap" rel="stylesheet">
+<title>Inamdar | Smart Hospital Management</title>
+
+<style>
+/* ============================================================
+   MEDNEXUS — DESIGN SYSTEM
+============================================================ */
+:root{
+    --primary:#2563eb;
+    --primary2:#06b6d4;
+    --primary3:#22d3ee;
+    --success:#10b981;
+    --warning:#f59e0b;
+    --danger:#ef4444;
+
+    --bg:#f4f7fb;
+    --surface:#ffffff;
+    --surface2:#f8fafc;
+    --surface3:#eef4fb;
+
+    --text:#0f172a;
+    --muted:#64748b;
+    --border:#e2e8f0;
+
+    --sidebar:#061321;
+    --sidebar2:#0b2037;
+
+    --shadow:0 15px 40px rgba(15,23,42,.07);
+    --shadow-lg:0 25px 70px rgba(15,23,42,.15);
+
+    --radius:18px;
+    --sidebar-width:265px;
+}
+
+body.dark{
+    --bg:#07111f;
+    --surface:#0d1b2d;
+    --surface2:#101f32;
+    --surface3:#14263b;
+
+    --text:#e7eef7;
+    --muted:#91a4bb;
+    --border:#1d334b;
+
+    --shadow:0 15px 40px rgba(0,0,0,.25);
+    --shadow-lg:0 25px 70px rgba(0,0,0,.38);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    transition:background .3s,color .3s;
+    overflow-x:hidden;
+}
+
+button,input,select{
+    font:inherit;
+}
+
+button{
+    -webkit-tap-highlight-color:transparent;
+}
+
+svg{
+    width:20px;
+    height:20px;
+}
+
+.hidden{
+    display:none!important;
+}
+
+/* ============================================================
+   ICON
+============================================================ */
+.icon{
+    width:20px;
+    height:20px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.icon svg{
+    width:100%;
+    height:100%;
+    stroke:currentColor;
+    fill:none;
+    stroke-width:2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+
+/* ============================================================
+   LOGIN
+============================================================ */
+#loginPage{
+    min-height:100vh;
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    background:#05111e;
+    overflow:hidden;
+}
+
+.login-art{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:70px 8vw;
+    color:#fff;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 15% 15%,rgba(34,211,238,.17),transparent 27%),
+        radial-gradient(circle at 85% 80%,rgba(37,99,235,.25),transparent 32%),
+        linear-gradient(145deg,#04101d,#08223b 55%,#0a3150);
+}
+
+.login-grid{
+    position:absolute;
+    inset:0;
+    opacity:.08;
+    background-image:
+        linear-gradient(rgba(255,255,255,.15) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.15) 1px,transparent 1px);
+    background-size:50px 50px;
+    mask-image:linear-gradient(to bottom,transparent,#000,transparent);
+}
+
+.glow{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.22;
+}
+
+.glow.one{
+    width:400px;
+    height:400px;
+    background:#06b6d4;
+    top:-170px;
+    left:-130px;
+}
+
+.glow.two{
+    width:450px;
+    height:450px;
+    background:#2563eb;
+    right:-180px;
+    bottom:-170px;
+}
+
+.login-brand{
+    position:absolute;
+    top:45px;
+    left:8vw;
+    display:flex;
+    align-items:center;
+    gap:13px;
+    z-index:3;
+}
+
+.brand-mark{
+    width:48px;
+    height:48px;
+    border-radius:15px;
+    background:linear-gradient(135deg,#22d3ee,#2563eb);
+    display:grid;
+    place-items:center;
+    box-shadow:0 12px 35px rgba(6,182,212,.25);
+}
+
+.brand-mark svg{
+    width:26px;
+    height:26px;
+}
+
+.login-brand strong{
+    font-size:20px;
+    letter-spacing:.2px;
+}
+
+.login-brand small{
+    display:block;
+    color:#8fb4d2;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:3px;
+}
+
+.login-content{
+    position:relative;
+    z-index:3;
+    max-width:650px;
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:7px 12px;
+    border-radius:30px;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.1);
+    color:#8be9f6;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1.3px;
+    margin-bottom:20px;
+}
+
+.login-content h1{
+    font-size:clamp(44px,5vw,74px);
+    line-height:.98;
+    letter-spacing:-3px;
+    max-width:700px;
+}
+
+.login-content h1 span{
+    background:linear-gradient(90deg,#67e8f9,#60a5fa);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.login-content>p{
+    color:#a6bed3;
+    font-size:16px;
+    line-height:1.8;
+    max-width:580px;
+    margin-top:25px;
+}
+
+.login-features{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:35px;
+}
+
+.login-feature{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 14px;
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.05);
+    border-radius:50px;
+    color:#d5e7f5;
+    font-size:12px;
+    backdrop-filter:blur(10px);
+}
+
+.login-feature .icon{
+    color:#67e8f9;
+    width:16px;
+    height:16px;
+}
+
+/* DNA */
+.dna{
+    position:absolute;
+    right:5%;
+    top:50%;
+    transform:translateY(-50%);
+    width:170px;
+    height:420px;
+    opacity:.20;
+    z-index:1;
+}
+
+.dna-row{
+    position:absolute;
+    left:50%;
+    width:120px;
+    height:2px;
+    background:linear-gradient(90deg,#22d3ee,#60a5fa);
+    transform-origin:center;
+    animation:dnaWave 4s ease-in-out infinite;
+}
+
+.dna-row::before,
+.dna-row::after{
+    content:"";
+    position:absolute;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    top:-4px;
+    background:#67e8f9;
+    box-shadow:0 0 15px #22d3ee;
+}
+
+.dna-row::before{left:-5px}
+.dna-row::after{right:-5px}
+
+@keyframes dnaWave{
+    0%,100%{transform:translateX(-50%) rotate(25deg) scaleX(.55)}
+    50%{transform:translateX(-50%) rotate(-25deg) scaleX(1)}
+}
+
+/* ECG */
+.ecg-line{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:85px;
+    height:100px;
+    opacity:.18;
+    overflow:hidden;
+}
+
+.ecg-line svg{
+    width:180%;
+    height:100%;
+    animation:ecg 8s linear infinite;
+}
+
+@keyframes ecg{
+    from{transform:translateX(-30%)}
+    to{transform:translateX(5%)}
+}
+
+/* Login right */
+.login-side{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+        radial-gradient(circle at top right,rgba(37,99,235,.08),transparent 35%),
+        #f8fbff;
+    padding:40px;
+    position:relative;
+}
+
+.login-card{
+    width:100%;
+    max-width:440px;
+    background:rgba(255,255,255,.88);
+    backdrop-filter:blur(22px);
+    border:1px solid rgba(255,255,255,.8);
+    border-radius:28px;
+    padding:42px;
+    box-shadow:0 30px 90px rgba(15,42,70,.13);
+    animation:cardEnter .7s ease;
+}
+
+@keyframes cardEnter{
+    from{opacity:0;transform:translateY(25px) scale(.97)}
+    to{opacity:1;transform:none}
+}
+
+.mobile-login-logo{
+    display:none;
+}
+
+.login-card .secure{
+    color:#0ea5e9;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1.3px;
+}
+
+.login-card h2{
+    color:#0f172a;
+    font-size:32px;
+    margin-top:8px;
+    letter-spacing:-1px;
+}
+
+.login-card>.sub{
+    color:#64748b;
+    margin-top:8px;
+    margin-bottom:30px;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.field{
+    margin-bottom:17px;
+}
+
+.field label{
+    display:flex;
+    justify-content:space-between;
+    color:#334155;
+    font-size:12px;
+    font-weight:750;
+    margin-bottom:8px;
+}
+
+.field-wrap{
+    height:50px;
+    display:flex;
+    align-items:center;
+    border:1px solid #dce4ee;
+    border-radius:13px;
+    background:#f8fafc;
+    padding:0 14px;
+    transition:.25s;
+}
+
+.field-wrap:focus-within{
+    background:white;
+    border-color:#3b82f6;
+    box-shadow:0 0 0 4px rgba(37,99,235,.08);
+}
+
+.field-wrap .icon{
+    color:#94a3b8;
+    width:18px;
+    height:18px;
+    margin-right:10px;
+}
+
+.field-wrap input{
+    border:none;
+    outline:none;
+    background:transparent;
+    width:100%;
+    color:#0f172a;
+}
+
+.eye-btn{
+    border:none;
+    background:transparent;
+    color:#94a3b8;
+    cursor:pointer;
+    display:grid;
+    place-items:center;
+}
+
+.login-options{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#64748b;
+    font-size:12px;
+    margin-top:2px;
+}
+
+.remember{
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+
+.fake-link{
+    color:#2563eb;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.signin{
+    width:100%;
+    height:51px;
+    border:none;
+    border-radius:13px;
+    color:white;
+    background:linear-gradient(110deg,#2563eb,#0891b2);
+    font-weight:800;
+    margin-top:24px;
+    cursor:pointer;
+    box-shadow:0 13px 28px rgba(37,99,235,.23);
+    transition:.25s;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+}
+
+.signin:hover{
+    transform:translateY(-2px);
+    box-shadow:0 17px 35px rgba(37,99,235,.3);
+}
+
+.signin:disabled{
+    opacity:.65;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.login-error{
+    color:#dc2626;
+    min-height:20px;
+    margin-top:13px;
+    font-size:12px;
+    text-align:center;
+}
+
+.login-card.shake{
+    animation:shake .35s ease;
+}
+
+@keyframes shake{
+    20%{transform:translateX(-8px)}
+    40%{transform:translateX(8px)}
+    60%{transform:translateX(-5px)}
+    80%{transform:translateX(5px)}
+}
+
+.login-security{
+    margin-top:18px;
+    padding-top:17px;
+    border-top:1px solid #edf2f7;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    color:#94a3b8;
+    font-size:10px;
+}
+
+.login-security .icon{
+    width:14px;
+    height:14px;
+    color:#10b981;
+}
+
+/* ============================================================
+   APP SHELL
+============================================================ */
+#app{
+    display:none;
+    min-height:100vh;
+}
+
+.sidebar{
+    position:fixed;
+    inset:0 auto 0 0;
+    width:var(--sidebar-width);
+    background:
+        radial-gradient(circle at 20% 5%,rgba(34,211,238,.09),transparent 25%),
+        linear-gradient(180deg,var(--sidebar),var(--sidebar2));
+    z-index:100;
+    padding:22px 16px;
+    color:white;
+    transition:.3s;
+    overflow-y:auto;
+}
+
+.sidebar-brand{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding:3px 8px 26px;
+}
+
+.sidebar-brand .brand-mark{
+    width:42px;
+    height:42px;
+    border-radius:13px;
+}
+
+.sidebar-brand h2{
+    font-size:18px;
+}
+
+.sidebar-brand p{
+    color:#6786a3;
+    font-size:8px;
+    letter-spacing:1.8px;
+    margin-top:3px;
+}
+
+.nav-label{
+    color:#496781;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.6px;
+    margin:16px 12px 8px;
+}
+
+.nav-btn{
+    width:100%;
+    border:none;
+    background:transparent;
+    color:#8ba5bd;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 13px;
+    border-radius:11px;
+    cursor:pointer;
+    text-align:left;
+    margin:3px 0;
+    transition:.22s;
+    position:relative;
+}
+
+.nav-btn .icon{
+    width:19px;
+    height:19px;
+}
+
+.nav-btn:hover{
+    background:rgba(255,255,255,.05);
+    color:#e8f5ff;
+    transform:translateX(2px);
+}
+
+.nav-btn.active{
+    background:linear-gradient(90deg,rgba(37,99,235,.3),rgba(6,182,212,.1));
+    color:#fff;
+}
+
+.nav-btn.active::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:9px;
+    bottom:9px;
+    width:3px;
+    border-radius:10px;
+    background:#22d3ee;
+    box-shadow:0 0 13px #22d3ee;
+}
+
+.nav-btn span:last-child{
+    font-size:13px;
+    font-weight:650;
+}
+
+.sidebar-profile{
+    position:absolute;
+    left:16px;
+    right:16px;
+    bottom:18px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:15px;
+    padding:11px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.avatar{
+    width:38px;
+    height:38px;
+    border-radius:11px;
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
+    color:white;
+    display:grid;
+    place-items:center;
+    font-weight:800;
+    flex-shrink:0;
+}
+
+.sidebar-profile strong{
+    display:block;
+    font-size:12px;
+}
+
+.sidebar-profile small{
+    display:block;
+    color:#6ee7b7;
+    font-size:9px;
+    margin-top:3px;
+}
+
+.main{
+    margin-left:var(--sidebar-width);
+    min-height:100vh;
+    transition:.3s;
+}
+
+.topbar{
+    height:74px;
+    position:sticky;
+    top:0;
+    z-index:70;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 28px;
+    border-bottom:1px solid var(--border);
+    background:color-mix(in srgb,var(--surface) 86%,transparent);
+    backdrop-filter:blur(18px);
+}
+
+.top-left{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.mobile-menu{
+    display:none;
+}
+
+.page-title h2{
+    font-size:19px;
+    letter-spacing:-.3px;
+}
+
+.breadcrumb{
+    color:var(--muted);
+    font-size:10px;
+    margin-top:3px;
+}
+
+.top-right{
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.global-search{
+    width:240px;
+    height:39px;
+    border:1px solid var(--border);
+    border-radius:11px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:0 11px;
+    background:var(--surface2);
+}
+
+.global-search .icon{
+    color:var(--muted);
+    width:16px;
+    height:16px;
+}
+
+.global-search input{
+    border:none;
+    outline:none;
+    background:transparent;
+    width:100%;
+    color:var(--text);
+    font-size:11px;
+}
+
+.date-display{
+    color:var(--muted);
+    font-size:11px;
+    padding:0 8px;
+}
+
+.circle-btn{
+    width:39px;
+    height:39px;
+    border:1px solid var(--border);
+    border-radius:11px;
+    background:var(--surface);
+    color:var(--muted);
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+    transition:.2s;
+    position:relative;
+}
+
+.circle-btn:hover{
+    color:var(--primary);
+    transform:translateY(-2px);
+    box-shadow:var(--shadow);
+}
+
+.notification-dot{
+    position:absolute;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#ef4444;
+    right:7px;
+    top:7px;
+    border:1px solid var(--surface);
+}
+
+.top-avatar{
+    margin-left:4px;
+    cursor:pointer;
+}
+
+.content{
+    padding:27px;
+    max-width:1700px;
+    margin:auto;
+}
+
+.page{
+    display:none;
+    animation:pageEnter .35s ease;
+}
+
+.page.active{
+    display:block;
+}
+
+@keyframes pageEnter{
+    from{opacity:0;transform:translateY(8px)}
+    to{opacity:1;transform:none}
+}
+
+/* ============================================================
+   DASHBOARD HERO
+============================================================ */
+.hero{
+    position:relative;
+    min-height:190px;
+    border-radius:24px;
+    padding:35px;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    color:white;
+    background:
+        radial-gradient(circle at 85% 15%,rgba(103,232,249,.18),transparent 30%),
+        linear-gradient(115deg,#071b31,#0d365a 60%,#075985);
+    box-shadow:0 20px 45px rgba(6,35,61,.16);
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    opacity:.08;
+    background-image:
+        linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.18) 1px,transparent 1px);
+    background-size:35px 35px;
+}
+
+.hero-text{
+    position:relative;
+    z-index:2;
+    max-width:650px;
+}
+
+.hero-label{
+    color:#67e8f9;
+    font-size:10px;
+    letter-spacing:1.6px;
+    font-weight:900;
+}
+
+.hero h1{
+    font-size:31px;
+    margin-top:8px;
+    letter-spacing:-1px;
+}
+
+.hero p{
+    color:#b4cde1;
+    margin-top:8px;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.hero-time{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:18px;
+    color:#d6eaf7;
+    font-size:11px;
+}
+
+.hero-dna{
+    position:absolute;
+    right:7%;
+    top:50%;
+    transform:translateY(-50%);
+    width:180px;
+    height:150px;
+    opacity:.5;
+}
+
+.helix{
+    position:absolute;
+    left:50%;
+    width:130px;
+    height:2px;
+    background:linear-gradient(90deg,#22d3ee,#60a5fa);
+    transform-origin:center;
+    animation:heroDNA 3s ease-in-out infinite;
+}
+
+.helix::before,.helix::after{
+    content:"";
+    position:absolute;
+    top:-5px;
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:#67e8f9;
+    box-shadow:0 0 14px rgba(103,232,249,.8);
+}
+
+.helix::before{left:-5px}
+.helix::after{right:-5px}
+
+@keyframes heroDNA{
+    0%,100%{transform:translateX(-50%) rotate(18deg) scaleX(.45)}
+    50%{transform:translateX(-50%) rotate(-18deg) scaleX(1)}
+}
+
+/* ============================================================
+   STATS
+============================================================ */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin:20px 0;
+}
+
+.stat{
+    position:relative;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:17px;
+    padding:18px;
+    box-shadow:0 5px 20px rgba(15,23,42,.025);
+    overflow:hidden;
+    transition:.25s;
+}
+
+.stat:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--shadow);
+}
+
+.stat-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.stat-icon{
+    width:43px;
+    height:43px;
+    border-radius:13px;
+    display:grid;
+    place-items:center;
+}
+
+.stat-icon .icon{
+    width:20px;
+    height:20px;
+}
+
+.i-blue{
+    color:#2563eb;
+    background:#dbeafe;
+}
+
+.i-cyan{
+    color:#0891b2;
+    background:#cffafe;
+}
+
+.i-green{
+    color:#059669;
+    background:#d1fae5;
+}
+
+.i-orange{
+    color:#d97706;
+    background:#fef3c7;
+}
+
+.i-red{
+    color:#dc2626;
+    background:#fee2e2;
+}
+
+body.dark .i-blue{background:rgba(37,99,235,.15)}
+body.dark .i-cyan{background:rgba(6,182,212,.15)}
+body.dark .i-green{background:rgba(16,185,129,.15)}
+body.dark .i-orange{background:rgba(245,158,11,.15)}
+body.dark .i-red{background:rgba(239,68,68,.15)}
+
+.trend{
+    font-size:9px;
+    font-weight:800;
+    color:#059669;
+    background:#dcfce7;
+    padding:4px 7px;
+    border-radius:20px;
+}
+
+body.dark .trend{
+    background:rgba(16,185,129,.12);
+}
+
+.stat h2{
+    font-size:27px;
+    margin-top:15px;
+    letter-spacing:-1px;
+}
+
+.stat p{
+    color:var(--muted);
+    font-size:10px;
+    margin-top:4px;
+}
+
+/* ============================================================
+   CARDS / DASHBOARD GRID
+============================================================ */
+.grid-main{
+    display:grid;
+    grid-template-columns:1.35fr .65fr;
+    gap:18px;
+}
+
+.card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(15,23,42,.025);
+}
+
+.card-pad{
+    padding:20px;
+}
+
+.card-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:18px;
+}
+
+.card-head h3{
+    font-size:14px;
+}
+
+.card-head p{
+    color:var(--muted);
+    font-size:10px;
+    margin-top:3px;
+}
+
+.soft-btn{
+    border:1px solid var(--border);
+    background:var(--surface2);
+    color:var(--muted);
+    border-radius:9px;
+    padding:7px 10px;
+    cursor:pointer;
+    font-size:10px;
+    font-weight:700;
+}
+
+/* Chart */
+.chart{
+    height:230px;
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    gap:10px;
+    padding:15px 5px 25px;
+    border-bottom:1px solid var(--border);
+}
+
+.chart::before,
+.chart::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    border-top:1px dashed var(--border);
+}
+
+.chart::before{top:33%}
+.chart::after{top:66%}
+
+.chart-bar-wrap{
+    flex:1;
+    height:100%;
+    display:flex;
+    align-items:flex-end;
+    position:relative;
+    z-index:2;
+}
+
+.chart-bar{
+    width:100%;
+    max-width:36px;
+    margin:auto;
+    min-height:4px;
+    background:linear-gradient(180deg,#22d3ee,#2563eb);
+    border-radius:8px 8px 3px 3px;
+    transition:.7s cubic-bezier(.2,.8,.2,1);
+    position:relative;
+}
+
+.chart-bar:hover{
+    filter:brightness(1.1);
+}
+
+.chart-label{
+    position:absolute;
+    bottom:-19px;
+    width:100%;
+    text-align:center;
+    color:var(--muted);
+    font-size:8px;
+}
+
+/* Status donut */
+.status-layout{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:30px;
+    min-height:230px;
+}
+
+.donut{
+    width:145px;
+    height:145px;
+    border-radius:50%;
+    position:relative;
+    background:conic-gradient(
+        #2563eb 0 33%,
+        #10b981 33% 66%,
+        #ef4444 66% 100%
+    );
+    box-shadow:inset 0 0 0 1px var(--border);
+}
+
+.donut::after{
+    content:"";
+    position:absolute;
+    inset:24px;
+    border-radius:50%;
+    background:var(--surface);
+}
+
+.donut-center{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    display:grid;
+    place-items:center;
+    text-align:center;
+}
+
+.donut-center strong{
+    display:block;
+    font-size:23px;
+}
+
+.donut-center small{
+    color:var(--muted);
+    font-size:8px;
+}
+
+.legend{
+    display:flex;
+    flex-direction:column;
+    gap:11px;
+}
+
+.legend-row{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:var(--muted);
+    font-size:10px;
+}
+
+.legend-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+}
+
+/* Upcoming */
+.upcoming{
+    margin-top:18px;
+}
+
+.upcoming-list{
+    display:grid;
+    gap:9px;
+}
+
+.appointment-item{
+    display:grid;
+    grid-template-columns:auto 1fr auto auto;
+    align-items:center;
+    gap:12px;
+    padding:12px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:var(--surface2);
+    transition:.2s;
+}
+
+.appointment-item:hover{
+    transform:translateX(2px);
+    border-color:#bfdbfe;
+}
+
+.appointment-item strong{
+    font-size:11px;
+}
+
+.appointment-item p{
+    color:var(--muted);
+    font-size:9px;
+    margin-top:3px;
+}
+
+/* ============================================================
+   PAGE HEADER / CONTROLS
+============================================================ */
+.page-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.page-heading h1{
+    font-size:25px;
+    letter-spacing:-.7px;
+}
+
+.page-heading p{
+    color:var(--muted);
+    font-size:11px;
+    margin-top:5px;
+}
+
+.primary-btn,
+.danger-btn,
+.secondary-btn{
+    border:none;
+    border-radius:10px;
+    min-height:38px;
+    padding:0 14px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    cursor:pointer;
+    font-size:10px;
+    font-weight:800;
+    transition:.2s;
+}
+
+.primary-btn{
+    color:white;
+    background:linear-gradient(110deg,#2563eb,#0891b2);
+    box-shadow:0 8px 18px rgba(37,99,235,.16);
+}
+
+.primary-btn:hover{
+    transform:translateY(-2px);
+}
+
+.secondary-btn{
+    background:var(--surface2);
+    color:var(--text);
+    border:1px solid var(--border);
+}
+
+.danger-btn{
+    color:#dc2626;
+    background:#fee2e2;
+}
+
+.controls{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+    padding:14px;
+    border-bottom:1px solid var(--border);
+}
+
+.search-box{
+    flex:1;
+    min-width:220px;
+    max-width:380px;
+    height:38px;
+    border:1px solid var(--border);
+    background:var(--surface2);
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding:0 11px;
+}
+
+.search-box .icon{
+    width:15px;
+    height:15px;
+    color:var(--muted);
+}
+
+.search-box input{
+    border:none;
+    outline:none;
+    background:transparent;
+    color:var(--text);
+    width:100%;
+    font-size:10px;
+}
+
+.filter-select,
+.filter-input{
+    height:38px;
+    border:1px solid var(--border);
+    background:var(--surface2);
+    color:var(--text);
+    border-radius:10px;
+    padding:0 10px;
+    outline:none;
+    font-size:10px;
+}
+
+/* ============================================================
+   TABLES
+============================================================ */
+.table-wrap{
+    overflow:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:800px;
+}
+
+th{
+    text-align:left;
+    padding:11px 14px;
+    color:var(--muted);
+    font-size:8px;
+    letter-spacing:.7px;
+    text-transform:uppercase;
+    background:var(--surface2);
+    border-bottom:1px solid var(--border);
+}
+
+td{
+    padding:12px 14px;
+    font-size:10px;
+    border-bottom:1px solid var(--border);
+    vertical-align:middle;
+}
+
+tbody tr{
+    transition:.18s;
+}
+
+tbody tr:hover{
+    background:var(--surface2);
+}
+
+.entity{
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.entity-avatar{
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    background:linear-gradient(135deg,#dbeafe,#cffafe);
+    color:#075985;
+    display:grid;
+    place-items:center;
+    font-weight:900;
+    font-size:11px;
+}
+
+body.dark .entity-avatar{
+    background:linear-gradient(135deg,rgba(37,99,235,.2),rgba(6,182,212,.15));
+    color:#67e8f9;
+}
+
+.entity strong{
+    display:block;
+    font-size:10px;
+}
+
+.entity small{
+    color:var(--muted);
+    font-size:8px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    padding:4px 8px;
+    border-radius:30px;
+    font-size:8px;
+    font-weight:850;
+}
+
+.badge-blue{
+    color:#1d4ed8;
+    background:#dbeafe;
+}
+
+.badge-green{
+    color:#047857;
+    background:#d1fae5;
+}
+
+.badge-red{
+    color:#b91c1c;
+    background:#fee2e2;
+}
+
+.badge-orange{
+    color:#b45309;
+    background:#fef3c7;
+}
+
+body.dark .badge-blue{background:rgba(37,99,235,.15);color:#93c5fd}
+body.dark .badge-green{background:rgba(16,185,129,.14);color:#6ee7b7}
+body.dark .badge-red{background:rgba(239,68,68,.14);color:#fca5a5}
+body.dark .badge-orange{background:rgba(245,158,11,.14);color:#fcd34d}
+
+.actions{
+    display:flex;
+    gap:5px;
+}
+
+.action{
+    width:30px;
+    height:30px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    background:var(--surface2);
+    color:var(--muted);
+    cursor:pointer;
+    display:grid;
+    place-items:center;
+    transition:.18s;
+}
+
+.action .icon{
+    width:13px;
+    height:13px;
+}
+
+.action:hover{
+    color:var(--primary);
+    border-color:#93c5fd;
+    transform:translateY(-1px);
+}
+
+.action.delete:hover{
+    color:var(--danger);
+    border-color:#fecaca;
+}
+
+.empty-state{
+    text-align:center;
+    padding:45px 20px;
+    color:var(--muted);
+}
+
+.empty-state .icon{
+    width:35px;
+    height:35px;
+    margin-bottom:10px;
+}
+
+.empty-state strong{
+    display:block;
+    color:var(--text);
+    margin-bottom:4px;
+}
+
+/* ============================================================
+   DOCTOR CARDS
+============================================================ */
+.doctor-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    padding:16px;
+}
+
+.doctor-card{
+    border:1px solid var(--border);
+    background:var(--surface);
+    border-radius:16px;
+    padding:18px;
+    position:relative;
+    transition:.25s;
+}
+
+.doctor-card:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--shadow);
+}
+
+.doctor-top{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.doctor-avatar{
+    width:48px;
+    height:48px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#dbeafe,#cffafe);
+    color:#075985;
+    display:grid;
+    place-items:center;
+    font-weight:900;
+    font-size:16px;
+}
+
+body.dark .doctor-avatar{
+    background:linear-gradient(135deg,rgba(37,99,235,.22),rgba(6,182,212,.15));
+    color:#67e8f9;
+}
+
+.doctor-card h3{
+    font-size:12px;
+}
+
+.doctor-card .speciality{
+    color:#0891b2;
+    font-size:9px;
+    font-weight:750;
+    margin-top:3px;
+}
+
+.availability{
+    position:absolute;
+    right:15px;
+    top:15px;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#10b981;
+    box-shadow:0 0 0 4px rgba(16,185,129,.1);
+}
+
+.doctor-info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:17px;
+    padding-top:15px;
+    border-top:1px solid var(--border);
+}
+
+.info-cell span{
+    color:var(--muted);
+    font-size:8px;
+    display:block;
+}
+
+.info-cell strong{
+    font-size:9px;
+    display:block;
+    margin-top:3px;
+    word-break:break-word;
+}
+
+.doctor-actions{
+    display:flex;
+    gap:7px;
+    margin-top:15px;
+}
+
+.doctor-actions button{
+    flex:1;
+}
+
+/* ============================================================
+   ANALYTICS
+============================================================ */
+.analytics-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.analytics-wide{
+    grid-column:1/-1;
+}
+
+.activity-bars{
+    display:flex;
+    align-items:flex-end;
+    height:240px;
+    gap:14px;
+    padding:20px 5px 25px;
+}
+
+.activity-col{
+    flex:1;
+    height:100%;
+    display:flex;
+    align-items:flex-end;
+    gap:3px;
+    position:relative;
+}
+
+.activity-col span{
+    flex:1;
+    border-radius:5px 5px 2px 2px;
+    min-height:4px;
+}
+
+.activity-col span:first-child{
+    background:#2563eb;
+}
+
+.activity-col span:last-child{
+    background:#22d3ee;
+}
+
+.activity-col small{
+    position:absolute;
+    bottom:-20px;
+    width:100%;
+    text-align:center;
+    color:var(--muted);
+    font-size:8px;
+}
+
+/* ============================================================
+   MODALS / DRAWER
+============================================================ */
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:2000;
+    background:rgba(2,6,23,.58);
+    backdrop-filter:blur(6px);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-card{
+    width:100%;
+    max-width:590px;
+    max-height:92vh;
+    overflow:auto;
+    border-radius:20px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow-lg);
+    animation:modalEnter .25s ease;
+}
+
+@keyframes modalEnter{
+    from{opacity:0;transform:translateY(15px) scale(.97)}
+    to{opacity:1;transform:none}
+}
+
+.modal-head{
+    padding:18px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    background:var(--surface);
+    z-index:2;
+}
+
+.modal-head h3{
+    font-size:14px;
+}
+
+.modal-head p{
+    color:var(--muted);
+    font-size:9px;
+    margin-top:3px;
+}
+
+.close-btn{
+    width:32px;
+    height:32px;
+    border:1px solid var(--border);
+    border-radius:9px;
+    background:var(--surface2);
+    color:var(--muted);
+    cursor:pointer;
+    display:grid;
+    place-items:center;
+}
+
+.modal-body{
+    padding:20px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+.form-group label{
+    display:block;
+    font-size:9px;
+    font-weight:800;
+    margin-bottom:6px;
+    color:var(--muted);
+}
+
+.form-group label b{
+    color:#ef4444;
+}
+
+.form-control{
+    width:100%;
+    height:42px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--surface2);
+    color:var(--text);
+    outline:none;
+    padding:0 11px;
+    font-size:10px;
+    transition:.2s;
+}
+
+.form-control:focus{
+    border-color:#60a5fa;
+    background:var(--surface);
+    box-shadow:0 0 0 3px rgba(37,99,235,.07);
+}
+
+.field-error{
+    min-height:13px;
+    color:#ef4444;
+    font-size:8px;
+    margin-top:4px;
+}
+
+.modal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+    margin-top:19px;
+    padding-top:17px;
+    border-top:1px solid var(--border);
+}
+
+/* Profile */
+.profile-banner{
+    height:100px;
+    background:linear-gradient(110deg,#0f365b,#0891b2);
+    position:relative;
+}
+
+.profile-avatar{
+    position:absolute;
+    left:24px;
+    bottom:-30px;
+    width:70px;
+    height:70px;
+    border-radius:18px;
+    background:linear-gradient(135deg,#dbeafe,#cffafe);
+    border:5px solid var(--surface);
+    color:#075985;
+    display:grid;
+    place-items:center;
+    font-size:24px;
+    font-weight:900;
+}
+
+.profile-content{
+    padding:45px 24px 24px;
+}
+
+.profile-content h2{
+    font-size:19px;
+}
+
+.profile-content>p{
+    color:var(--muted);
+    font-size:10px;
+    margin-top:3px;
+}
+
+.profile-data{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-top:18px;
+}
+
+.profile-data div{
+    background:var(--surface2);
+    border:1px solid var(--border);
+    border-radius:11px;
+    padding:12px;
+}
+
+.profile-data span{
+    display:block;
+    color:var(--muted);
+    font-size:8px;
+}
+
+.profile-data strong{
+    display:block;
+    font-size:10px;
+    margin-top:4px;
+}
+
+/* ============================================================
+   TOAST
+============================================================ */
+#toastBox{
+    position:fixed;
+    right:22px;
+    top:90px;
+    z-index:5000;
+    display:grid;
+    gap:8px;
+}
+
+.toast{
+    width:300px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:13px;
+    box-shadow:var(--shadow-lg);
+    padding:12px 14px;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    animation:toastEnter .3s ease;
+}
+
+@keyframes toastEnter{
+    from{opacity:0;transform:translateX(30px)}
+    to{opacity:1;transform:none}
+}
+
+.toast-icon{
+    width:27px;
+    height:27px;
+    border-radius:8px;
+    display:grid;
+    place-items:center;
+    flex-shrink:0;
+}
+
+.toast.success .toast-icon{
+    color:#059669;
+    background:#d1fae5;
+}
+
+.toast.error .toast-icon{
+    color:#dc2626;
+    background:#fee2e2;
+}
+
+.toast strong{
+    display:block;
+    font-size:10px;
+}
+
+.toast p{
+    color:var(--muted);
+    font-size:9px;
+    margin-top:3px;
+    line-height:1.4;
+}
+
+/* ============================================================
+   LOADER / SKELETON
+============================================================ */
+.spinner{
+    width:15px;
+    height:15px;
+    border-radius:50%;
+    border:2px solid rgba(255,255,255,.35);
+    border-top-color:white;
+    animation:spin .7s linear infinite;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+.page-loader{
+    position:fixed;
+    left:var(--sidebar-width);
+    top:74px;
+    height:2px;
+    background:linear-gradient(90deg,#2563eb,#22d3ee);
+    z-index:300;
+    animation:loader 1.1s infinite;
+}
+
+@keyframes loader{
+    0%{width:0;opacity:1}
+    70%{width:calc(100% - var(--sidebar-width));opacity:1}
+    100%{width:calc(100% - var(--sidebar-width));opacity:0}
+}
+
+.skeleton{
+    background:linear-gradient(90deg,var(--surface2),var(--surface3),var(--surface2));
+    background-size:200% 100%;
+    animation:skeleton 1.2s infinite;
+    border-radius:7px;
+}
+
+@keyframes skeleton{
+    to{background-position:-200% 0}
+}
+
+/* ============================================================
+   CONSOLE
+============================================================ */
+.console{
+    margin-top:18px;
+    background:#030a13;
+    border:1px solid #162235;
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.console-head{
+    height:38px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 14px;
+    background:#091321;
+    color:#6f879f;
+    font-size:8px;
+    letter-spacing:.7px;
+    font-weight:800;
+}
+
+.console-dots{
+    display:flex;
+    gap:5px;
+}
+
+.console-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+}
+
+.console-output{
+    color:#a9bdd0;
+    padding:14px;
+    max-height:230px;
+    min-height:75px;
+    overflow:auto;
+    white-space:pre-wrap;
+    font-family:Consolas,monospace;
+    font-size:9px;
+    line-height:1.55;
+}
+
+/* ============================================================
+   MOBILE OVERLAY
+============================================================ */
+.mobile-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:90;
+    background:rgba(2,6,23,.5);
+    backdrop-filter:blur(2px);
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media(max-width:1200px){
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .doctor-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .global-search{
+        display:none;
+    }
+}
+
+@media(max-width:900px){
+    #loginPage{
+        grid-template-columns:1fr;
+    }
+
+    .login-art{
+        display:none;
+    }
+
+    .login-side{
+        min-height:100vh;
+    }
+
+    .mobile-login-logo{
+        display:flex;
+        align-items:center;
+        gap:10px;
+        margin-bottom:25px;
+        color:#0f172a;
+    }
+
+    .mobile-login-logo .brand-mark{
+        width:40px;
+        height:40px;
+    }
+
+    .sidebar{
+        transform:translateX(-100%);
+    }
+
+    .sidebar.mobile-open{
+        transform:none;
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .mobile-menu{
+        display:grid;
+    }
+
+    .page-loader{
+        left:0;
+    }
+
+    .grid-main,
+    .analytics-grid{
+        grid-template-columns:1fr;
+    }
+
+    .analytics-wide{
+        grid-column:auto;
+    }
+
+    .mobile-overlay.show{
+        display:block;
+    }
+
+    .date-display{
+        display:none;
+    }
+}
+
+@media(max-width:650px){
+    .content{
+        padding:17px;
+    }
+
+    .topbar{
+        padding:0 15px;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+    }
+
+    .stat{
+        padding:14px;
+    }
+
+    .hero{
+        padding:25px;
+        min-height:210px;
+    }
+
+    .hero h1{
+        font-size:25px;
+    }
+
+    .hero-dna{
+        opacity:.16;
+        right:-25px;
+    }
+
+    .doctor-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .page-heading .primary-btn{
+        width:100%;
+    }
+
+    .status-layout{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .appointment-item{
+        grid-template-columns:auto 1fr;
+    }
+
+    .appointment-item>.badge,
+    .appointment-item>.soft-btn{
+        grid-column:2;
+        justify-self:start;
+    }
+
+    .profile-data{
+        grid-template-columns:1fr;
+    }
+
+    .top-avatar{
+        display:none;
+    }
+
+    #toastBox{
+        left:15px;
+        right:15px;
+    }
+
+    .toast{
+        width:100%;
+    }
+}
+
+@media(max-width:430px){
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .login-side{
+        padding:18px;
+    }
+
+    .login-card{
+        padding:28px 22px;
+    }
+
+    .login-card h2{
+        font-size:27px;
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        scroll-behavior:auto!important;
+        transition-duration:.01ms!important;
+    }
+}
+
+/* ============================================================
+   REDESIGN LAYER — sirf look badla hai. HTML ids, JS aur API calls same hain.
+============================================================ */
+:root{
+  --primary:#0f766e; --primary2:#14b8a6; --primary3:#5eead4;
+  --success:#15803d; --warning:#b45309; --danger:#c2410c;
+  --bg:#f2f5f3; --surface:#ffffff; --surface2:#f7f9f8; --surface3:#e9f0ed;
+  --text:#10201e; --muted:#5d716d; --border:#d9e3df;
+  --sidebar:#0b2926; --sidebar2:#10373a;
+  --shadow:0 1px 2px rgba(16,32,30,.06); --shadow-lg:0 18px 50px rgba(16,32,30,.16);
+  --radius:10px; --sidebar-width:248px;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+}
+body.dark{
+  --bg:#08191a; --surface:#0e2425; --surface2:#112b2c; --surface3:#163536;
+  --text:#e4f0ed; --muted:#8fa9a4; --border:#1f3f40;
+  --shadow:0 1px 2px rgba(0,0,0,.3); --shadow-lg:0 18px 50px rgba(0,0,0,.45);
+}
+body{font-family:"IBM Plex Sans","Segoe UI",Roboto,Arial,sans-serif;font-size:14px;line-height:1.5}
+:focus-visible{outline:2px solid var(--primary2);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* Surfaces: flat, bordered, one radius */
+body .card,body .stat,body .doctor-card,body .modal-card,body .table-wrap,
+body .appointment-item,body .info-cell,body .profile-banner{
+  border:1px solid var(--border);border-radius:var(--radius);box-shadow:none;background:var(--surface)}
+body .modal-card{box-shadow:var(--shadow-lg)}
+body .card-head{border-bottom:1px solid var(--border)}
+
+/* Sidebar: deep clinical green, active item marked by a left bar */
+body .sidebar{background:var(--sidebar);border-right:1px solid rgba(255,255,255,.05)}
+body .sidebar-brand strong,body .login-brand strong{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:0}
+body .brand-mark{background:var(--primary2);border-radius:10px;box-shadow:none;color:#06201d}
+body .nav-label{font-size:11px;letter-spacing:.4px;text-transform:none;color:#7fa7a1;font-weight:600}
+body .nav-btn{border-radius:8px;color:#bcd6d1;position:relative;transition:background .15s,color .15s}
+body .nav-btn:hover{background:rgba(255,255,255,.06);color:#fff}
+body .nav-btn.active{background:rgba(94,234,212,.12);color:#fff;box-shadow:none}
+body .nav-btn.active::before{content:"";position:absolute;left:-12px;top:8px;bottom:8px;width:3px;border-radius:0 3px 3px 0;background:var(--primary3)}
+body .sidebar-profile{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:10px}
+
+/* Top bar */
+body .topbar{background:color-mix(in srgb,var(--surface) 92%,transparent);border-bottom:1px solid var(--border);box-shadow:none;backdrop-filter:blur(8px)}
+body .search-box,body .global-search,body .filter-input,body .filter-select,body .form-control{
+  border:1px solid var(--border);border-radius:8px;background:var(--surface2);color:var(--text)}
+body .form-control:focus,body .filter-input:focus,body .filter-select:focus{
+  border-color:var(--primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 18%,transparent);outline:none}
+body .circle-btn{border:1px solid var(--border);background:var(--surface);border-radius:8px;box-shadow:none}
+
+/* Page headings in serif */
+body .page-title,body .page-heading h1,body .page-heading h2{font-family:var(--serif);font-weight:600;letter-spacing:-.4px}
+body .page-heading h1,body .page-title{font-size:30px}
+
+/* Hero: calm slab with an ECG baseline, the one memorable moment */
+body .hero{background:var(--sidebar);border-radius:var(--radius);border:0;color:#e9f6f3;position:relative;overflow:hidden}
+body .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:44px;opacity:.35;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='44' viewBox='0 0 320 44'%3E%3Cpath d='M0 28H110L122 28 130 8 140 38 148 22 156 28H320' fill='none' stroke='%235eead4' stroke-width='1.6'/%3E%3C/svg%3E") repeat-x}
+body .hero h1,body .hero h2,body .hero-text h1,body #greeting{font-family:var(--serif);font-weight:500;letter-spacing:-.5px}
+body .hero-label,body .hero-time{color:#9cc4bd}
+
+/* Stats */
+body .stat{padding:18px 20px}
+body .stat-icon{border-radius:8px}
+body .stat h2,body .stat strong,body .stat-top+*{font-variant-numeric:tabular-nums}
+body .trend{font-weight:600}
+
+/* Buttons */
+body .primary-btn{background:var(--primary);color:#fff;border:0;border-radius:8px;box-shadow:none;font-weight:600;transition:background .15s}
+body .primary-btn:hover{background:#0b5f58;transform:none}
+body .secondary-btn,body .soft-btn{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:8px;box-shadow:none}
+body .secondary-btn:hover,body .soft-btn:hover{background:var(--surface3)}
+body .danger-btn{background:transparent;color:var(--danger);border:1px solid color-mix(in srgb,var(--danger) 40%,transparent);border-radius:8px}
+body .danger-btn:hover{background:color-mix(in srgb,var(--danger) 10%,transparent)}
+
+/* Tables */
+body table{border-collapse:collapse}
+body th{font-size:12px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--muted);background:var(--surface2);border-bottom:1px solid var(--border)}
+body td{border-bottom:1px solid var(--border)}
+body tbody tr:hover{background:var(--surface2)}
+
+/* Badges: tinted text, no loud fills */
+body .badge{border-radius:6px;font-weight:600;font-size:12px;padding:3px 9px}
+body .badge-green{background:#dcf5e6;color:#14532d}
+body .badge-blue{background:#d6efec;color:#0b4f49}
+body .badge-orange{background:#fdecc8;color:#7a3e07}
+body .badge-red{background:#fde0d6;color:#8f2a0a}
+body.dark .badge-green{background:#123a26;color:#86efac}
+body.dark .badge-blue{background:#0f3b39;color:#5eead4}
+body.dark .badge-orange{background:#3d2b0e;color:#fcd34d}
+body.dark .badge-red{background:#431b10;color:#fdba9b}
+
+/* Avatars & doctor cards */
+body .avatar,body .doctor-avatar,body .entity-avatar,body .profile-avatar,body .top-avatar{
+  background:var(--primary);color:#fff;border-radius:50%;box-shadow:none}
+body .doctor-card:hover{border-color:var(--primary)}
+
+/* Console + toasts */
+body .console{background:#071a18;border:1px solid #14403b;border-radius:var(--radius)}
+body .console-output{font-family:"IBM Plex Mono",Consolas,monospace}
+body .toast{border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow-lg);background:var(--surface);color:var(--text)}
+
+/* Login */
+body #loginPage{background:#071e1c}
+body .login-art{background:linear-gradient(160deg,#071e1c,#0b2926 60%,#0f3a3a)}
+body .glow{display:none}
+body .login-grid{opacity:.05}
+body .login-content h1{font-family:var(--serif);font-weight:500;letter-spacing:-2px;line-height:1.02}
+body .login-content h1 span{background:none;color:var(--primary3);-webkit-text-fill-color:var(--primary3)}
+body .eyebrow{border-radius:6px;letter-spacing:.3px;text-transform:none;color:#9cecdf}
+body .login-feature{border-radius:8px}
+body .login-side{background:#f2f5f3}
+body .login-card{background:#fff;border:1px solid #d9e3df;border-radius:14px;box-shadow:0 20px 60px rgba(11,41,38,.1);backdrop-filter:none}
+body .login-card h2{font-family:var(--serif);font-weight:600;letter-spacing:-.5px;font-size:34px}
+body .login-card .secure{color:var(--primary);letter-spacing:0;text-transform:none}
+body .field-wrap{border-radius:8px;border-color:#d0dcd8;background:#fff}
+body .field-wrap:focus-within{border-color:var(--primary);box-shadow:0 0 0 3px rgba(15,118,110,.15)}
+body .signin{background:var(--primary);border-radius:8px;box-shadow:none;font-weight:600}
+body .signin:hover{background:#0b5f58}
+</style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     SVG ICON LIBRARY
+============================================================ -->
+<svg style="display:none">
+    <symbol id="i-cross" viewBox="0 0 24 24">
+        <path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/>
+    </symbol>
+
+    <symbol id="i-dashboard" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="7" height="7" rx="2"/>
+        <rect x="14" y="3" width="7" height="7" rx="2"/>
+        <rect x="3" y="14" width="7" height="7" rx="2"/>
+        <rect x="14" y="14" width="7" height="7" rx="2"/>
+    </symbol>
+
+    <symbol id="i-users" viewBox="0 0 24 24">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+    </symbol>
+
+    <symbol id="i-doctor" viewBox="0 0 24 24">
+        <circle cx="12" cy="7" r="4"/>
+        <path d="M5.5 21v-2a6.5 6.5 0 0 1 13 0v2"/>
+        <path d="M9 14l3 3 3-3"/>
+    </symbol>
+
+    <symbol id="i-calendar" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="16" rx="2"/>
+        <path d="M16 3v4M8 3v4M3 11h18"/>
+    </symbol>
+
+    <symbol id="i-chart" viewBox="0 0 24 24">
+        <path d="M3 3v18h18"/>
+        <path d="m7 16 4-5 4 3 5-7"/>
+    </symbol>
+
+    <symbol id="i-bell" viewBox="0 0 24 24">
+        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+        <path d="M10 21h4"/>
+    </symbol>
+
+    <symbol id="i-settings" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21h-4v-.1A1.7 1.7 0 0 0 8.6 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H3v-4h.1A1.7 1.7 0 0 0 4.6 8.6a1.7 1.7 0 0 0-.34-1.88l-.06-.06 2.83-2.83.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V3h4v.1A1.7 1.7 0 0 0 15.4 4.6a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.83 2.83-.06.06A1.7 1.7 0 0 0 19.4 9c.4.3.7.6.9 1 .1.3.1.7.1 1h.1v4h-.1a1.7 1.7 0 0 0-1 .6z"/>
+    </symbol>
+
+    <symbol id="i-search" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.35-4.35"/>
+    </symbol>
+
+    <symbol id="i-moon" viewBox="0 0 24 24">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </symbol>
+
+    <symbol id="i-sun" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+    </symbol>
+
+    <symbol id="i-menu" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+    </symbol>
+
+    <symbol id="i-plus" viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12h14"/>
+    </symbol>
+
+    <symbol id="i-refresh" viewBox="0 0 24 24">
+        <path d="M20 6v6h-6"/>
+        <path d="M4 18v-6h6"/>
+        <path d="M18.5 9A7 7 0 0 0 6 6l-2 2M5.5 15A7 7 0 0 0 18 18l2-2"/>
+    </symbol>
+
+    <symbol id="i-edit" viewBox="0 0 24 24">
+        <path d="M12 20h9"/>
+        <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/>
+    </symbol>
+
+    <symbol id="i-trash" viewBox="0 0 24 24">
+        <path d="M3 6h18M8 6V4h8v2M19 6l-1 15H6L5 6M10 11v6M14 11v6"/>
+    </symbol>
+
+    <symbol id="i-eye" viewBox="0 0 24 24">
+        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/>
+        <circle cx="12" cy="12" r="3"/>
+    </symbol>
+
+    <symbol id="i-lock" viewBox="0 0 24 24">
+        <rect x="4" y="10" width="16" height="11" rx="2"/>
+        <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+    </symbol>
+
+    <symbol id="i-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4"/>
+        <path d="M4 21a8 8 0 0 1 16 0"/>
+    </symbol>
+
+    <symbol id="i-check" viewBox="0 0 24 24">
+        <path d="m5 12 4 4L19 6"/>
+    </symbol>
+
+    <symbol id="i-x" viewBox="0 0 24 24">
+        <path d="M18 6 6 18M6 6l12 12"/>
+    </symbol>
+
+    <symbol id="i-logout" viewBox="0 0 24 24">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+        <path d="m16 17 5-5-5-5M21 12H9"/>
+    </symbol>
+</svg>
+
+<!-- ============================================================
+     LOGIN
+============================================================ -->
+<section id="loginPage">
+
+    <div class="login-art">
+
+        <div class="login-grid"></div>
+        <div class="glow one"></div>
+        <div class="glow two"></div>
+
+        <div class="login-brand">
+            <div class="brand-mark">
+                <svg><use href="#i-cross"/></svg>
+            </div>
+
+            <div>
+                <strong>MEDNEXUS</strong>
+                <small>SMART HOSPITAL MANAGEMENT</small>
+            </div>
+        </div>
+
+        <div class="login-content">
+
+            <div class="eyebrow">
+                <span>●</span>
+                NEXT-GEN HEALTHCARE PLATFORM
+            </div>
+
+            <h1>
+                Healthcare.<br>
+                <span>Connected.</span><br>
+                Intelligent.
+            </h1>
+
+            <p>
+                Manage patients, doctors and appointments through one
+                secure intelligent healthcare platform designed for
+                modern hospitals.
+            </p>
+
+            <div class="login-features">
+
+                <div class="login-feature">
+                    <span class="icon">
+                        <svg><use href="#i-lock"/></svg>
+                    </span>
+                    Secure Access
+                </div>
+
+                <div class="login-feature">
+                    <span class="icon">
+                        <svg><use href="#i-users"/></svg>
+                    </span>
+                    Patient Management
+                </div>
+
+                <div class="login-feature">
+                    <span class="icon">
+                        <svg><use href="#i-doctor"/></svg>
+                    </span>
+                    Doctor Management
+                </div>
+
+                <div class="login-feature">
+                    <span class="icon">
+                        <svg><use href="#i-calendar"/></svg>
+                    </span>
+                    Smart Appointments
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="dna" id="loginDNA"></div>
+
+        <div class="ecg-line">
+            <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+                <path
+                    d="M0 55 H130 L155 55 L175 20 L200 85 L225 45 L245 55 H400
+                       L425 55 L445 20 L470 85 L495 45 L515 55 H700
+                       L725 55 L745 20 L770 85 L795 45 L815 55 H1200"
+                    fill="none"
+                    stroke="#67e8f9"
+                    stroke-width="2"/>
+            </svg>
+        </div>
+
+    </div>
+
+    <div class="login-side">
+
+        <div class="login-card" id="loginCard">
+
+            <div class="mobile-login-logo">
+                <div class="brand-mark">
+                    <svg><use href="#i-cross"/></svg>
+                </div>
+                <strong>MEDNEXUS</strong>
+            </div>
+
+            <div class="secure">
+                SECURE PORTAL
+            </div>
+
+            <h2>Welcome back</h2>
+
+            <p class="sub">
+                Sign in with your hospital credentials to continue
+                to the management dashboard.
+            </p>
+
+            <div class="field">
+                <label>Username</label>
+
+                <div class="field-wrap">
+                    <span class="icon">
+                        <svg><use href="#i-user"/></svg>
+                    </span>
+
+                    <input
+                        id="loginUsername"
+                        type="text"
+                        placeholder="Enter username"
+                        autocomplete="username">
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Password</label>
+
+                <div class="field-wrap">
+
+                    <span class="icon">
+                        <svg><use href="#i-lock"/></svg>
+                    </span>
+
+                    <input
+                        id="loginPassword"
+                        type="password"
+                        placeholder="Enter password"
+                        autocomplete="current-password">
+
+                    <button
+                        type="button"
+                        class="eye-btn"
+                        onclick="togglePassword()"
+                        aria-label="Show or hide password">
+
+                        <span class="icon">
+                            <svg><use href="#i-eye"/></svg>
+                        </span>
+
+                    </button>
+
+                </div>
+            </div>
+
+            <div class="login-options">
+
+                <label class="remember">
+                    <input type="checkbox" id="rememberMe">
+                    Remember me
+                </label>
+
+                <span class="fake-link"
+                      onclick="toast('Info','Contact your administrator to reset your password.')">
+                    Forgot password?
+                </span>
+
+            </div>
+
+            <button
+                id="loginBtn"
+                class="signin"
+                onclick="login()">
+
+                <span>Sign In</span>
+
+                <span>→</span>
+
+            </button>
+
+            <div id="loginError" class="login-error"></div>
+
+            <div class="login-security">
+
+                <span class="icon">
+                    <svg><use href="#i-lock"/></svg>
+                </span>
+
+                Protected by Spring Security
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============================================================
+     APPLICATION
+============================================================ -->
+<div id="app">
+
+    <div id="mobileOverlay"
+         class="mobile-overlay"
+         onclick="toggleSidebar(false)">
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+
+            <div class="brand-mark">
+                <svg><use href="#i-cross"/></svg>
+            </div>
+
+            <div>
+                <h2>MedNexus</h2>
+                <p>HOSPITAL SYSTEM</p>
+            </div>
+
+        </div>
+
+        <div class="nav-label">OVERVIEW</div>
+
+        <button class="nav-btn active"
+                data-page="dashboard"
+                onclick="navigate('dashboard',this)">
+            <span class="icon">
+                <svg><use href="#i-dashboard"/></svg>
+            </span>
+            <span>Dashboard</span>
+        </button>
+
+        <button class="nav-btn"
+                data-page="patients"
+                onclick="navigate('patients',this)">
+            <span class="icon">
+                <svg><use href="#i-users"/></svg>
+            </span>
+            <span>Patients</span>
+        </button>
+
+        <button class="nav-btn"
+                data-page="doctors"
+                onclick="navigate('doctors',this)">
+            <span class="icon">
+                <svg><use href="#i-doctor"/></svg>
+            </span>
+            <span>Doctors</span>
+        </button>
+
+        <button class="nav-btn"
+                data-page="appointments"
+                onclick="navigate('appointments',this)">
+            <span class="icon">
+                <svg><use href="#i-calendar"/></svg>
+            </span>
+            <span>Appointments</span>
+        </button>
+
+        <button class="nav-btn"
+                data-page="analytics"
+                onclick="navigate('analytics',this)">
+            <span class="icon">
+                <svg><use href="#i-chart"/></svg>
+            </span>
+            <span>Analytics</span>
+        </button>
+
+        <div class="nav-label">SYSTEM</div>
+
+        <button class="nav-btn"
+                onclick="toast('Notifications','No new hospital notifications.')">
+            <span class="icon">
+                <svg><use href="#i-bell"/></svg>
+            </span>
+            <span>Notifications</span>
+        </button>
+
+        <button class="nav-btn"
+                onclick="toast('Settings','Settings module is ready for future backend settings.')">
+            <span class="icon">
+                <svg><use href="#i-settings"/></svg>
+            </span>
+            <span>Settings</span>
+        </button>
+
+        <div class="sidebar-profile">
+
+            <div class="avatar" id="sidebarAvatar">
+                A
+            </div>
+
+            <div>
+                <strong id="sidebarUser">Administrator</strong>
+                <small>● Online</small>
+            </div>
+
+        </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <header class="topbar">
+
+            <div class="top-left">
+
+                <button class="circle-btn mobile-menu"
+                        onclick="toggleSidebar(true)">
+                    <span class="icon">
+                        <svg><use href="#i-menu"/></svg>
+                    </span>
+                </button>
+
+                <div class="page-title">
+                    <h2 id="pageTitle">Dashboard</h2>
+                    <div class="breadcrumb">
+                        MedNexus / <span id="breadcrumb">Dashboard</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="top-right">
+
+                <div class="global-search">
+                    <span class="icon">
+                        <svg><use href="#i-search"/></svg>
+                    </span>
+                    <input
+                        placeholder="Search hospital..."
+                        onkeydown="globalSearch(event)">
+                </div>
+
+                <div class="date-display" id="currentDate"></div>
+
+                <button class="circle-btn"
+                        onclick="toggleTheme()"
+                        title="Toggle theme">
+
+                    <span class="icon">
+                        <svg id="themeIcon">
+                            <use href="#i-moon"/>
+                        </svg>
+                    </span>
+
+                </button>
+
+                <button class="circle-btn"
+                        onclick="toast('Notifications','You are all caught up.')">
+
+                    <span class="icon">
+                        <svg><use href="#i-bell"/></svg>
+                    </span>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+                <div class="avatar top-avatar"
+                     id="topAvatar"
+                     onclick="toast('Account','Logged in as '+state.username)">
+                    A
+                </div>
+
+                <button class="circle-btn"
+                        onclick="logout()"
+                        title="Logout">
+
+                    <span class="icon">
+                        <svg><use href="#i-logout"/></svg>
+                    </span>
+
+                </button>
+
+            </div>
+
+        </header>
+
+        <div id="pageLoader" class="page-loader hidden"></div>
+
+        <div class="content">
+
+            <!-- ==================================================
+                 DASHBOARD
+            =================================================== -->
+            <section id="dashboardPage" class="page active">
+
+                <div class="hero">
+
+                    <div class="hero-text">
+
+                        <div class="hero-label">
+                            HOSPITAL COMMAND CENTER
+                        </div>
+
+                        <h1 id="greeting">
+                            Good day, Administrator
+                        </h1>
+
+                        <p>
+                            Here's what's happening across your hospital today.
+                            Monitor patients, medical staff and appointments
+                            from one intelligent workspace.
+                        </p>
+
+                        <div class="hero-time">
+                            <span>●</span>
+                            <span id="heroDateTime"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="hero-dna" id="heroDNA"></div>
+
+                </div>
+
+                <div class="stats">
+
+                    <div class="stat">
+                        <div class="stat-top">
+                            <div class="stat-icon i-blue">
+                                <span class="icon">
+                                    <svg><use href="#i-users"/></svg>
+                                </span>
+                            </div>
+                            <span class="trend">LIVE</span>
+                        </div>
+
+                        <h2 id="totalPatients">0</h2>
+                        <p>Total Patients</p>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-top">
+                            <div class="stat-icon i-cyan">
+                                <span class="icon">
+                                    <svg><use href="#i-doctor"/></svg>
+                                </span>
+                            </div>
+                            <span class="trend">LIVE</span>
+                        </div>
+
+                        <h2 id="totalDoctors">0</h2>
+                        <p>Medical Professionals</p>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-top">
+                            <div class="stat-icon i-orange">
+                                <span class="icon">
+                                    <svg><use href="#i-calendar"/></svg>
+                                </span>
+                            </div>
+                            <span class="trend">LIVE</span>
+                        </div>
+
+                        <h2 id="totalAppointments">0</h2>
+                        <p>Total Appointments</p>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-top">
+                            <div class="stat-icon i-green">
+                                <span class="icon">
+                                    <svg><use href="#i-check"/></svg>
+                                </span>
+                            </div>
+                            <span class="trend">LIVE</span>
+                        </div>
+
+                        <h2 id="completedAppointments">0</h2>
+                        <p>Completed Appointments</p>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-top">
+                            <div class="stat-icon i-blue">
+                                <span class="icon">
+                                    <svg><use href="#i-calendar"/></svg>
+                                </span>
+                            </div>
+                            <span class="trend">TODAY</span>
+                        </div>
+
+                        <h2 id="todayAppointments">0</h2>
+                        <p>Today's Appointments</p>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-top">
+                            <div class="stat-icon i-cyan">
+                                <span class="icon">
+                                    <svg><use href="#i-calendar"/></svg>
+                                </span>
+                            </div>
+                        </div>
+
+                        <h2 id="scheduledAppointments">0</h2>
+                        <p>Scheduled</p>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-top">
+                            <div class="stat-icon i-red">
+                                <span class="icon">
+                                    <svg><use href="#i-x"/></svg>
+                                </span>
+                            </div>
+                        </div>
+
+                        <h2 id="cancelledAppointments">0</h2>
+                        <p>Cancelled</p>
+                    </div>
+
+                </div>
+
+                <div class="grid-main">
+
+                    <div class="card card-pad">
+
+                        <div class="card-head">
+                            <div>
+                                <h3>Appointment Overview</h3>
+                                <p>Appointment volume based on current backend data</p>
+                            </div>
+
+                            <button class="soft-btn"
+                                    onclick="loadDashboard()">
+                                Refresh
+                            </button>
+                        </div>
+
+                        <div class="chart" id="appointmentChart"></div>
+
+                    </div>
+
+                    <div class="card card-pad">
+
+                        <div class="card-head">
+                            <div>
+                                <h3>Appointment Status</h3>
+                                <p>Current status distribution</p>
+                            </div>
+                        </div>
+
+                        <div class="status-layout">
+
+                            <div class="donut" id="statusDonut">
+                                <div class="donut-center">
+                                    <div>
+                                        <strong id="donutTotal">0</strong>
+                                        <small>TOTAL</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="legend">
+
+                                <div class="legend-row">
+                                    <span class="legend-dot"
+                                          style="background:#2563eb"></span>
+                                    Scheduled
+                                    <b id="legendScheduled">0</b>
+                                </div>
+
+                                <div class="legend-row">
+                                    <span class="legend-dot"
+                                          style="background:#10b981"></span>
+                                    Completed
+                                    <b id="legendCompleted">0</b>
+                                </div>
+
+                                <div class="legend-row">
+                                    <span class="legend-dot"
+                                          style="background:#ef4444"></span>
+                                    Cancelled
+                                    <b id="legendCancelled">0</b>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card card-pad upcoming">
+
+                    <div class="card-head">
+
+                        <div>
+                            <h3>Upcoming Appointments</h3>
+                            <p>Next scheduled patient consultations</p>
+                        </div>
+
+                        <button class="soft-btn"
+                                onclick="navigateByName('appointments')">
+                            View all
+                        </button>
+
+                    </div>
+
+                    <div class="upcoming-list"
+                         id="upcomingAppointments">
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ==================================================
+                 PATIENTS
+            =================================================== -->
+            <section id="patientsPage" class="page">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>Patient Management</h1>
+                        <p>
+                            Manage and monitor hospital patient records.
+                            <b id="patientPageCount">0</b> patients registered.
+                        </p>
+                    </div>
+
+                    <button class="primary-btn"
+                            onclick="openPatientModal()">
+
+                        <span class="icon">
+                            <svg><use href="#i-plus"/></svg>
+                        </span>
+
+                        Add Patient
+
+                    </button>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="controls">
+
+                        <div class="search-box">
+                            <span class="icon">
+                                <svg><use href="#i-search"/></svg>
+                            </span>
+
+                            <input
+                                id="patientSearch"
+                                placeholder="Search patient name, disease or phone..."
+                                oninput="debounceRenderPatients()">
+                        </div>
+
+                        <select id="genderFilter"
+                                class="filter-select"
+                                onchange="renderPatients()">
+                            <option value="">All genders</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                        <select id="patientSort"
+                                class="filter-select"
+                                onchange="renderPatients()">
+                            <option value="new">Newest first</option>
+                            <option value="name">Name A-Z</option>
+                            <option value="age">Age</option>
+                        </select>
+
+                        <button class="secondary-btn"
+                                onclick="loadPatients()">
+
+                            <span class="icon">
+                                <svg><use href="#i-refresh"/></svg>
+                            </span>
+
+                            Refresh
+
+                        </button>
+
+                    </div>
+
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+                            <tr>
+                                <th>Patient</th>
+                                <th>ID</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Phone</th>
+                                <th>Condition</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+
+                            <tbody id="patientTable"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ==================================================
+                 DOCTORS
+            =================================================== -->
+            <section id="doctorsPage" class="page">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>Doctor Management</h1>
+                        <p>
+                            Manage hospital medical professionals and specialists.
+                        </p>
+                    </div>
+
+                    <button class="primary-btn"
+                            onclick="openDoctorModal()">
+
+                        <span class="icon">
+                            <svg><use href="#i-plus"/></svg>
+                        </span>
+
+                        Add Doctor
+
+                    </button>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="controls">
+
+                        <div class="search-box">
+
+                            <span class="icon">
+                                <svg><use href="#i-search"/></svg>
+                            </span>
+
+                            <input
+                                id="doctorSearch"
+                                placeholder="Search doctor, specialization or email..."
+                                oninput="debounceRenderDoctors()">
+
+                        </div>
+
+                        <select id="specializationFilter"
+                                class="filter-select"
+                                onchange="renderDoctors()">
+                            <option value="">All specializations</option>
+                        </select>
+
+                        <select id="experienceFilter"
+                                class="filter-select"
+                                onchange="renderDoctors()">
+                            <option value="">All experience</option>
+                            <option value="0">0+ years</option>
+                            <option value="5">5+ years</option>
+                            <option value="10">10+ years</option>
+                        </select>
+
+                        <button class="secondary-btn"
+                                onclick="loadDoctors()">
+
+                            <span class="icon">
+                                <svg><use href="#i-refresh"/></svg>
+                            </span>
+
+                            Refresh
+
+                        </button>
+
+                    </div>
+
+                    <div class="doctor-grid" id="doctorGrid"></div>
+
+                </div>
+
+            </section>
+
+            <!-- ==================================================
+                 APPOINTMENTS
+            =================================================== -->
+            <section id="appointmentsPage" class="page">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>Appointment Management</h1>
+                        <p>
+                            Schedule and manage patient consultations.
+                        </p>
+                    </div>
+
+                    <button class="primary-btn"
+                            onclick="openAppointmentModal()">
+
+                        <span class="icon">
+                            <svg><use href="#i-plus"/></svg>
+                        </span>
+
+                        Book Appointment
+
+                    </button>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="controls">
+
+                        <div class="search-box">
+
+                            <span class="icon">
+                                <svg><use href="#i-search"/></svg>
+                            </span>
+
+                            <input
+                                id="appointmentSearch"
+                                placeholder="Search patient or doctor..."
+                                oninput="debounceRenderAppointments()">
+
+                        </div>
+
+                        <select id="statusFilter"
+                                class="filter-select"
+                                onchange="renderAppointments()">
+
+                            <option value="">All status</option>
+                            <option value="SCHEDULED">Scheduled</option>
+                            <option value="COMPLETED">Completed</option>
+                            <option value="CANCELLED">Cancelled</option>
+
+                        </select>
+
+                        <input
+                            id="appointmentDateFilter"
+                            type="date"
+                            class="filter-input"
+                            onchange="renderAppointments()">
+
+                        <button class="secondary-btn"
+                                onclick="loadAppointments()">
+
+                            <span class="icon">
+                                <svg><use href="#i-refresh"/></svg>
+                            </span>
+
+                            Refresh
+
+                        </button>
+
+                    </div>
+
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+                            <tr>
+                                <th>Appointment</th>
+                                <th>Patient</th>
+                                <th>Doctor</th>
+                                <th>Specialization</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+
+                            <tbody id="appointmentTable"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ==================================================
+                 ANALYTICS
+            =================================================== -->
+            <section id="analyticsPage" class="page">
+
+                <div class="page-heading">
+                    <div>
+                        <h1>Hospital Analytics</h1>
+                        <p>Live operational insights calculated from backend data.</p>
+                    </div>
+
+                    <button class="secondary-btn"
+                            onclick="loadDashboard()">
+
+                        <span class="icon">
+                            <svg><use href="#i-refresh"/></svg>
+                        </span>
+
+                        Refresh Analytics
+
+                    </button>
+                </div>
+
+                <div class="analytics-grid">
+
+                    <div class="card card-pad">
+
+                        <div class="card-head">
+                            <div>
+                                <h3>Appointment Status</h3>
+                                <p>Current hospital appointment distribution</p>
+                            </div>
+                        </div>
+
+                        <div class="status-layout">
+
+                            <div class="donut" id="analyticsDonut">
+
+                                <div class="donut-center">
+                                    <div>
+                                        <strong id="analyticsTotal">0</strong>
+                                        <small>APPOINTMENTS</small>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="legend">
+
+                                <div class="legend-row">
+                                    <span class="legend-dot"
+                                          style="background:#2563eb"></span>
+                                    Scheduled
+                                    <b id="analyticsScheduled">0</b>
+                                </div>
+
+                                <div class="legend-row">
+                                    <span class="legend-dot"
+                                          style="background:#10b981"></span>
+                                    Completed
+                                    <b id="analyticsCompleted">0</b>
+                                </div>
+
+                                <div class="legend-row">
+                                    <span class="legend-dot"
+                                          style="background:#ef4444"></span>
+                                    Cancelled
+                                    <b id="analyticsCancelled">0</b>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card card-pad">
+
+                        <div class="card-head">
+                            <div>
+                                <h3>Hospital Snapshot</h3>
+                                <p>Current database records</p>
+                            </div>
+                        </div>
+
+                        <div class="stats"
+                             style="grid-template-columns:1fr 1fr;margin:0">
+
+                            <div class="stat">
+                                <h2 id="analyticsPatients">0</h2>
+                                <p>Patients</p>
+                            </div>
+
+                            <div class="stat">
+                                <h2 id="analyticsDoctors">0</h2>
+                                <p>Doctors</p>
+                            </div>
+
+                            <div class="stat">
+                                <h2 id="analyticsAppointments">0</h2>
+                                <p>Appointments</p>
+                            </div>
+
+                            <div class="stat">
+                                <h2 id="analyticsCompletionRate">0%</h2>
+                                <p>Completion Rate</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card card-pad analytics-wide">
+
+                        <div class="card-head">
+                            <div>
+                                <h3>Hospital Activity</h3>
+                                <p>Appointments grouped by day of week</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-bars"
+                             id="activityBars">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ==================================================
+                 API CONSOLE
+            =================================================== -->
+            <div class="console">
+
+                <div class="console-head">
+
+                    <div style="display:flex;align-items:center;gap:9px">
+
+                        <div class="console-dots">
+                            <span class="console-dot"
+                                  style="background:#ef4444"></span>
+                            <span class="console-dot"
+                                  style="background:#f59e0b"></span>
+                            <span class="console-dot"
+                                  style="background:#10b981"></span>
+                        </div>
+
+                        API RESPONSE CONSOLE
+
+                    </div>
+
+                    <span id="consoleInfo">READY</span>
+
+                </div>
+
+                <div class="console-output"
+                     id="apiConsole">
+MedNexus API client initialized.
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<!-- ============================================================
+     PATIENT MODAL
+============================================================ -->
+<div id="patientModal" class="modal">
+
+    <div class="modal-card">
+
+        <div class="modal-head">
+
+            <div>
+                <h3 id="patientModalTitle">Register Patient</h3>
+                <p>Create or update a patient medical record.</p>
+            </div>
+
+            <button class="close-btn"
+                    onclick="closeModal('patientModal')">
+
+                <span class="icon">
+                    <svg><use href="#i-x"/></svg>
+                </span>
+
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <input type="hidden" id="patientId">
+
+            <div class="form-grid">
+
+                <div class="form-group full">
+                    <label>Patient Name <b>*</b></label>
+                    <input id="patientName"
+                           class="form-control"
+                           placeholder="e.g. Rahul Patil">
+                    <div class="field-error" id="patientNameError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Age <b>*</b></label>
+                    <input id="patientAge"
+                           type="number"
+                           min="0"
+                           max="130"
+                           class="form-control"
+                           placeholder="Age">
+                </div>
+
+                <div class="form-group">
+                    <label>Gender <b>*</b></label>
+
+                    <select id="patientGender"
+                            class="form-control">
+                        <option value="">Select gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone <b>*</b></label>
+
+                    <input id="patientPhone"
+                           class="form-control"
+                           placeholder="9876543210">
+                </div>
+
+                <div class="form-group">
+                    <label>Disease / Condition <b>*</b></label>
+
+                    <input id="patientDisease"
+                           class="form-control"
+                           placeholder="e.g. Fever">
+                </div>
+
+            </div>
+
+            <div class="modal-actions">
+
+                <button class="secondary-btn"
+                        onclick="closeModal('patientModal')">
+                    Cancel
+                </button>
+
+                <button class="primary-btn"
+                        id="patientSaveBtn"
+                        onclick="savePatient()">
+                    Save Patient
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ============================================================
+     DOCTOR MODAL
+============================================================ -->
+<div id="doctorModal" class="modal">
+
+    <div class="modal-card">
+
+        <div class="modal-head">
+
+            <div>
+                <h3 id="doctorModalTitle">Add Doctor</h3>
+                <p>Register or update a medical professional.</p>
+            </div>
+
+            <button class="close-btn"
+                    onclick="closeModal('doctorModal')">
+
+                <span class="icon">
+                    <svg><use href="#i-x"/></svg>
+                </span>
+
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <input type="hidden" id="doctorId">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>First Name <b>*</b></label>
+                    <input id="doctorFirstName"
+                           class="form-control"
+                           placeholder="Priya">
+                </div>
+
+                <div class="form-group">
+                    <label>Last Name <b>*</b></label>
+                    <input id="doctorLastName"
+                           class="form-control"
+                           placeholder="Sharma">
+                </div>
+
+                <div class="form-group">
+                    <label>Email <b>*</b></label>
+                    <input id="doctorEmail"
+                           type="email"
+                           class="form-control"
+                           placeholder="doctor@hospital.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Phone <b>*</b></label>
+                    <input id="doctorPhone"
+                           class="form-control"
+                           placeholder="9876543210">
+                </div>
+
+                <div class="form-group">
+                    <label>Specialization <b>*</b></label>
+                    <input id="doctorSpecialization"
+                           class="form-control"
+                           placeholder="Cardiology">
+                </div>
+
+                <div class="form-group">
+                    <label>Qualification <b>*</b></label>
+                    <input id="doctorQualification"
+                           class="form-control"
+                           placeholder="MBBS, MD">
+                </div>
+
+                <div class="form-group">
+                    <label>Experience</label>
+                    <input id="doctorExperience"
+                           type="number"
+                           min="0"
+                           class="form-control"
+                           placeholder="5">
+                </div>
+
+                <div class="form-group">
+                    <label>Joining Date</label>
+                    <input id="doctorJoiningDate"
+                           type="date"
+                           class="form-control">
+                </div>
+
+            </div>
+
+            <div class="modal-actions">
+
+                <button class="secondary-btn"
+                        onclick="closeModal('doctorModal')">
+                    Cancel
+                </button>
+
+                <button class="primary-btn"
+                        id="doctorSaveBtn"
+                        onclick="saveDoctor()">
+                    Save Doctor
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ============================================================
+     APPOINTMENT MODAL
+============================================================ -->
+<div id="appointmentModal" class="modal">
+
+    <div class="modal-card">
+
+        <div class="modal-head">
+
+            <div>
+                <h3 id="appointmentModalTitle">Book Appointment</h3>
+                <p>Schedule a consultation between patient and doctor.</p>
+            </div>
+
+            <button class="close-btn"
+                    onclick="closeModal('appointmentModal')">
+
+                <span class="icon">
+                    <svg><use href="#i-x"/></svg>
+                </span>
+
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <input type="hidden" id="appointmentId">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Patient <b>*</b></label>
+
+                    <select id="appointmentPatient"
+                            class="form-control">
+                        <option value="">Select patient</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Doctor <b>*</b></label>
+
+                    <select id="appointmentDoctor"
+                            class="form-control">
+                        <option value="">Select doctor</option>
+                    </select>
+                </div>
+
+                <div class="form-group full">
+                    <label>Appointment Date & Time <b>*</b></label>
+
+                    <input id="appointmentDateTime"
+                           type="datetime-local"
+                           class="form-control">
+                </div>
+
+                <div class="form-group full">
+                    <label>Status</label>
+
+                    <select id="appointmentStatus"
+                            class="form-control">
+                        <option value="SCHEDULED">Scheduled</option>
+                        <option value="COMPLETED">Completed</option>
+                        <option value="CANCELLED">Cancelled</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="modal-actions">
+
+                <button class="secondary-btn"
+                        onclick="closeModal('appointmentModal')">
+                    Cancel
+                </button>
+
+                <button class="primary-btn"
+                        id="appointmentSaveBtn"
+                        onclick="saveAppointment()">
+                    Save Appointment
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ============================================================
+     PROFILE MODAL
+============================================================ -->
+<div id="profileModal" class="modal">
+
+    <div class="modal-card">
+
+        <div class="profile-banner">
+
+            <button class="close-btn"
+                    onclick="closeModal('profileModal')"
+                    style="position:absolute;right:15px;top:15px">
+
+                <span class="icon">
+                    <svg><use href="#i-x"/></svg>
+                </span>
+
+            </button>
+
+            <div class="profile-avatar"
+                 id="profileAvatar">
+                P
+            </div>
+
+        </div>
+
+        <div class="profile-content">
+
+            <h2 id="profileName">Profile</h2>
+
+            <p id="profileSubtitle"></p>
+
+            <div class="profile-data"
+                 id="profileData">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ============================================================
+     DELETE CONFIRMATION
+============================================================ -->
+<div id="deleteModal" class="modal">
+
+    <div class="modal-card"
+         style="max-width:420px">
+
+        <div class="modal-body"
+             style="text-align:center;padding:32px">
+
+            <div class="stat-icon i-red"
+                 style="margin:0 auto 15px">
+
+                <span class="icon">
+                    <svg><use href="#i-trash"/></svg>
+                </span>
+
+            </div>
+
+            <h3 style="font-size:17px">
+                Confirm deletion
+            </h3>
+
+            <p id="deleteMessage"
+               style="color:var(--muted);font-size:10px;line-height:1.6;margin:9px 0 20px">
+                Are you sure?
+            </p>
+
+            <div style="display:flex;justify-content:center;gap:8px">
+
+                <button class="secondary-btn"
+                        onclick="closeModal('deleteModal')">
+                    Keep Record
+                </button>
+
+                <button class="danger-btn"
+                        onclick="confirmDelete()">
+                    Delete Permanently
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="toastBox"></div>
+
+<script>
+/* ============================================================
+   STATE
+============================================================ */
+
+const state = {
+    username:"",
+    password:"",
+    role:"ADMIN",
+    patients:[],
+    doctors:[],
+    appointments:[],
+    deleteAction:null
+};
+
+/* ============================================================
+   UTILITIES
+============================================================ */
+
+function icon(name){
+    return `
+        <span class="icon">
+            <svg><use href="#i-${name}"/></svg>
+        </span>
+    `;
+}
+
+function escapeHTML(value){
+    return String(value ?? "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+}
+
+function initials(name){
+    const parts=String(name||"?")
+        .trim()
+        .split(/\s+/);
+
+    return parts
+        .slice(0,2)
+        .map(x=>x.charAt(0))
+        .join("")
+        .toUpperCase() || "?";
+}
+
+function formatDateTime(value){
+    if(!value) return "-";
+
+    const date=new Date(value);
+
+    if(Number.isNaN(date.getTime()))
+        return value;
+
+    return date.toLocaleString(undefined,{
+        dateStyle:"medium",
+        timeStyle:"short"
+    });
+}
+
+function dateOnly(value){
+    if(!value) return "-";
+
+    const d=new Date(value);
+
+    if(Number.isNaN(d.getTime()))
+        return value;
+
+    return d.toLocaleDateString(undefined,{
+        year:"numeric",
+        month:"short",
+        day:"numeric"
+    });
+}
+
+function timeOnly(value){
+    if(!value) return "-";
+
+    const d=new Date(value);
+
+    if(Number.isNaN(d.getTime()))
+        return "-";
+
+    return d.toLocaleTimeString(undefined,{
+        hour:"2-digit",
+        minute:"2-digit"
+    });
+}
+
+function sameDay(a,b){
+    return (
+        a.getFullYear()===b.getFullYear() &&
+        a.getMonth()===b.getMonth() &&
+        a.getDate()===b.getDate()
+    );
+}
+
+function statusBadge(status){
+
+    const normalized=
+        String(status||"UNKNOWN").toUpperCase();
+
+    let cls="badge-orange";
+
+    if(normalized==="SCHEDULED")
+        cls="badge-blue";
+
+    if(normalized==="COMPLETED")
+        cls="badge-green";
+
+    if(normalized==="CANCELLED")
+        cls="badge-red";
+
+    return `
+        <span class="badge ${cls}">
+            ${escapeHTML(normalized)}
+        </span>
+    `;
+}
+
+function setButtonLoading(button,loading,text){
+
+    if(loading){
+        button.disabled=true;
+        button.dataset.original=button.innerHTML;
+
+        button.innerHTML=`
+            <span class="spinner"></span>
+            ${escapeHTML(text||"Processing")}
+        `;
+    }
+    else{
+        button.disabled=false;
+
+        if(button.dataset.original)
+            button.innerHTML=button.dataset.original;
+    }
+}
+
+function debounce(fn,delay=250){
+    let timer;
+
+    return (...args)=>{
+        clearTimeout(timer);
+
+        timer=setTimeout(
+            ()=>fn(...args),
+            delay
+        );
+    };
+}
+
+/* ============================================================
+   DNA GENERATION
+============================================================ */
+
+function createDNA(container,count=15){
+
+    container.innerHTML="";
+
+    for(let i=0;i<count;i++){
+
+        const line=document.createElement("div");
+
+        line.className=
+            container.id==="heroDNA"
+            ? "helix"
+            : "dna-row";
+
+        line.style.top=
+            `${(i/(count-1))*100}%`;
+
+        line.style.animationDelay=
+            `${i*.12}s`;
+
+        container.appendChild(line);
+    }
+}
+
+createDNA(
+    document.getElementById("loginDNA"),
+    18
+);
+
+createDNA(
+    document.getElementById("heroDNA"),
+    11
+);
+
+/* ============================================================
+   AUTHENTICATION
+============================================================ */
+
+function authHeader(){
+    return "Basic "+
+        btoa(
+            state.username+
+            ":"+
+            state.password
+        );
+}
+
+function togglePassword(){
+
+    const input=
+        document.getElementById(
+            "loginPassword"
+        );
+
+    input.type=
+        input.type==="password"
+        ? "text"
+        : "password";
+}
+
+async function login(){
+
+    const username=
+        document.getElementById(
+            "loginUsername"
+        ).value.trim();
+
+    const password=
+        document.getElementById(
+            "loginPassword"
+        ).value;
+
+    const error=
+        document.getElementById(
+            "loginError"
+        );
+
+    const button=
+        document.getElementById(
+            "loginBtn"
+        );
+
+    if(!username || !password){
+
+        error.textContent=
+            "Username and password are required.";
+
+        shakeLogin();
+
+        return;
+    }
+
+    state.username=username;
+    state.password=password;
+
+    setButtonLoading(
+        button,
+        true,
+        "Authenticating"
+    );
+
+    error.textContent="";
+
+    try{
+
+        /*
+          Use an already-protected API to verify
+          Spring Security credentials.
+        */
+
+        const response=
+            await fetch(
+                "/api/patients",
+                {
+                    headers:{
+                        Authorization:
+                            authHeader()
+                    }
+                }
+            );
+
+        if(response.status===401 ||
+           response.status===403){
+
+            throw new Error(
+                "INVALID_CREDENTIALS"
+            );
+        }
+
+        if(!response.ok){
+
+            throw new Error(
+                "HTTP "+response.status
+            );
+        }
+
+        const patientData=
+            await response.json();
+
+        state.patients=
+            Array.isArray(patientData)
+            ? patientData
+            : [];
+
+        document.getElementById(
+            "loginPage"
+        ).style.display="none";
+
+        document.getElementById(
+            "app"
+        ).style.display="block";
+
+        setupLoggedUser();
+
+        toast(
+            "Welcome to MedNexus",
+            "Authentication successful.",
+            "success"
+        );
+
+        await loadDashboard();
+
+    }
+    catch(err){
+
+        state.username="";
+        state.password="";
+
+        if(err.message==="INVALID_CREDENTIALS"){
+
+            error.textContent=
+                "Invalid username or password.";
+
+        }
+        else{
+
+            error.textContent=
+                "Unable to connect to the hospital server.";
+        }
+
+        shakeLogin();
+
+    }
+    finally{
+
+        setButtonLoading(
+            button,
+            false
+        );
+    }
+}
+
+function shakeLogin(){
+
+    const card=
+        document.getElementById(
+            "loginCard"
+        );
+
+    card.classList.remove("shake");
+
+    void card.offsetWidth;
+
+    card.classList.add("shake");
+}
+
+function setupLoggedUser(){
+
+    const user=
+        state.username || "Administrator";
+
+    const initial=
+        user.charAt(0).toUpperCase();
+
+    document.getElementById(
+        "sidebarUser"
+    ).textContent=user;
+
+    document.getElementById(
+        "sidebarAvatar"
+    ).textContent=initial;
+
+    document.getElementById(
+        "topAvatar"
+    ).textContent=initial;
+
+    updateGreeting();
+}
+
+function logout(){
+
+    state.username="";
+    state.password="";
+    state.patients=[];
+    state.doctors=[];
+    state.appointments=[];
+
+    document.getElementById(
+        "app"
+    ).style.display="none";
+
+    document.getElementById(
+        "loginPage"
+    ).style.display="grid";
+
+    document.getElementById(
+        "loginPassword"
+    ).value="";
+
+    document.getElementById(
+        "loginError"
+    ).textContent="";
+
+    toast(
+        "Signed out",
+        "Your MedNexus session has ended."
+    );
+}
+
+/* ============================================================
+   API CLIENT
+============================================================ */
+
+async function api(method,url,body=null){
+
+    showLoader(true);
+
+    const options={
+        method,
+        headers:{
+            Authorization:authHeader(),
+            "Content-Type":"application/json"
+        }
+    };
+
+    if(body!==null)
+        options.body=JSON.stringify(body);
+
+    try{
+
+        const response=
+            await fetch(url,options);
+
+        const text=
+            await response.text();
+
+        let data=null;
+
+        if(text){
+
+            try{
+                data=JSON.parse(text);
+            }
+            catch{
+                data=text;
+            }
+        }
+
+        showConsole(
+            method,
+            url,
+            response.status,
+            data
+        );
+
+        if(response.status===401){
+
+            toast(
+                "Session expired",
+                "Please sign in again.",
+                "error"
+            );
+
+            setTimeout(
+                logout,
+                800
+            );
+
+            throw new Error(
+                "Unauthorized"
+            );
+        }
+
+        if(response.status===403){
+
+            toast(
+                "Permission denied",
+                "You do not have permission to perform this action.",
+                "error"
+            );
+
+            throw new Error(
+                "Forbidden"
+            );
+        }
+
+        if(!response.ok){
+
+            const message=
+                typeof data==="object"
+                ? (
+                    data?.message ||
+                    data?.error ||
+                    "Request failed"
+                )
+                : (
+                    data ||
+                    "Request failed"
+                );
+
+            toast(
+                `HTTP ${response.status}`,
+                String(message),
+                "error"
+            );
+
+            throw new Error(
+                `HTTP ${response.status}`
+            );
+        }
+
+        return data;
+
+    }
+    catch(err){
+
+        if(
+            !String(err.message)
+                .startsWith("HTTP") &&
+            err.message!=="Unauthorized" &&
+            err.message!=="Forbidden"
+        ){
+            toast(
+                "Network error",
+                err.message,
+                "error"
+            );
+        }
+
+        throw err;
+
+    }
+    finally{
+        showLoader(false);
+    }
+}
+
+function showLoader(show){
+
+    document.getElementById(
+        "pageLoader"
+    ).classList.toggle(
+        "hidden",
+        !show
+    );
+}
+
+function showConsole(method,url,status,data){
+
+    document.getElementById(
+        "consoleInfo"
+    ).textContent=
+        `${method} • ${status} • ${new Date().toLocaleTimeString()}`;
+
+    const body=
+        typeof data==="object"
+        ? JSON.stringify(data,null,2)
+        : String(data ?? "");
+
+    document.getElementById(
+        "apiConsole"
+    ).textContent=
+`${method} ${url}
+Status: ${status}
+
+${body}`;
+}
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+
+const pageNames={
+    dashboard:"Dashboard",
+    patients:"Patients",
+    doctors:"Doctors",
+    appointments:"Appointments",
+    analytics:"Analytics"
+};
+
+function navigate(page,button){
+
+    document.querySelectorAll(
+        ".page"
+    ).forEach(
+        p=>p.classList.remove("active")
+    );
+
+    const target=
+        document.getElementById(
+            page+"Page"
+        );
+
+    if(!target)
+        return;
+
+    target.classList.add("active");
+
+    document.querySelectorAll(
+        ".nav-btn[data-page]"
+    ).forEach(
+        n=>n.classList.remove("active")
+    );
+
+    if(button)
+        button.classList.add("active");
+
+    document.getElementById(
+        "pageTitle"
+    ).textContent=
+        pageNames[page];
+
+    document.getElementById(
+        "breadcrumb"
+    ).textContent=
+        pageNames[page];
+
+    toggleSidebar(false);
+
+    if(page==="dashboard")
+        loadDashboard();
+
+    if(page==="patients")
+        loadPatients();
+
+    if(page==="doctors")
+        loadDoctors();
+
+    if(page==="appointments")
+        loadAppointments();
+
+    if(page==="analytics")
+        loadDashboard();
+}
+
+function navigateByName(page){
+
+    const btn=
+        document.querySelector(
+            `.nav-btn[data-page="${page}"]`
+        );
+
+    navigate(page,btn);
+}
+
+function toggleSidebar(open){
+
+    document.getElementById(
+        "sidebar"
+    ).classList.toggle(
+        "mobile-open",
+        open
+    );
+
+    document.getElementById(
+        "mobileOverlay"
+    ).classList.toggle(
+        "show",
+        open
+    );
+}
+
+/* ============================================================
+   DASHBOARD
+============================================================ */
+
+async function loadDashboard(){
+
+    try{
+
+        const results=
+            await Promise.all([
+                api("GET","/api/patients"),
+                api("GET","/api/doctors"),
+                api("GET","/api/appointments")
+            ]);
+
+        state.patients=
+            Array.isArray(results[0])
+            ? results[0]
+            : [];
+
+        state.doctors=
+            Array.isArray(results[1])
+            ? results[1]
+            : [];
+
+        state.appointments=
+            Array.isArray(results[2])
+            ? results[2]
+            : [];
+
+        updateDashboard();
+
+        renderPatients();
+        renderDoctors();
+        renderAppointments();
+
+        populateSpecializations();
+        populateAppointmentSelectors();
+
+    }
+    catch(err){
+        console.error(err);
+    }
+}
+
+function updateDashboard(){
+
+    const appointments=
+        state.appointments;
+
+    const completed=
+        appointments.filter(
+            a=>a.status==="COMPLETED"
+        ).length;
+
+    const scheduled=
+        appointments.filter(
+            a=>a.status==="SCHEDULED"
+        ).length;
+
+    const cancelled=
+        appointments.filter(
+            a=>a.status==="CANCELLED"
+        ).length;
+
+    const now=new Date();
+
+    const today=
+        appointments.filter(a=>{
+
+            if(!a.appointmentDateTime)
+                return false;
+
+            const date=
+                new Date(
+                    a.appointmentDateTime
+                );
+
+            return sameDay(date,now);
+
+        }).length;
+
+    animateNumber(
+        "totalPatients",
+        state.patients.length
+    );
+
+    animateNumber(
+        "totalDoctors",
+        state.doctors.length
+    );
+
+    animateNumber(
+        "totalAppointments",
+        appointments.length
+    );
+
+    animateNumber(
+        "completedAppointments",
+        completed
+    );
+
+    animateNumber(
+        "todayAppointments",
+        today
+    );
+
+    animateNumber(
+        "scheduledAppointments",
+        scheduled
+    );
+
+    animateNumber(
+        "cancelledAppointments",
+        cancelled
+    );
+
+    document.getElementById(
+        "patientPageCount"
+    ).textContent=
+        state.patients.length;
+
+    updateDonut(
+        appointments.length,
+        scheduled,
+        completed,
+        cancelled
+    );
+
+    renderAppointmentChart();
+    renderUpcoming();
+    renderAnalytics();
+}
+
+function animateNumber(id,target){
+
+    const el=
+        document.getElementById(id);
+
+    if(!el)
+        return;
+
+    const duration=500;
+    const start=performance.now();
+
+    function tick(now){
+
+        const progress=
+            Math.min(
+                (now-start)/duration,
+                1
+            );
+
+        el.textContent=
+            Math.round(
+                target*progress
+            );
+
+        if(progress<1)
+            requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+}
+
+function updateDonut(
+    total,
+    scheduled,
+    completed,
+    cancelled
+){
+
+    let s=0,c=0,x=0;
+
+    if(total>0){
+        s=scheduled/total*100;
+        c=completed/total*100;
+        x=cancelled/total*100;
+    }
+
+    const gradient=
+        total===0
+        ? "conic-gradient(#e2e8f0 0 100%)"
+        : `conic-gradient(
+            #2563eb 0 ${s}%,
+            #10b981 ${s}% ${s+c}%,
+            #ef4444 ${s+c}% 100%
+          )`;
+
+    ["statusDonut","analyticsDonut"]
+        .forEach(id=>{
+
+            const el=
+                document.getElementById(id);
+
+            if(el)
+                el.style.background=gradient;
+        });
+
+    document.getElementById(
+        "donutTotal"
+    ).textContent=total;
+
+    document.getElementById(
+        "legendScheduled"
+    ).textContent=scheduled;
+
+    document.getElementById(
+        "legendCompleted"
+    ).textContent=completed;
+
+    document.getElementById(
+        "legendCancelled"
+    ).textContent=cancelled;
+}
+
+function renderAppointmentChart(){
+
+    const chart=
+        document.getElementById(
+            "appointmentChart"
+        );
+
+    const counts=
+        Array(7).fill(0);
+
+    const labels=[];
+
+    for(let offset=6;offset>=0;offset--){
+
+        const date=new Date();
+
+        date.setDate(
+            date.getDate()-offset
+        );
+
+        labels.push(
+            date.toLocaleDateString(
+                undefined,
+                {weekday:"short"}
+            )
+        );
+
+        state.appointments
+            .forEach(a=>{
+
+                if(!a.appointmentDateTime)
+                    return;
+
+                const appointmentDate=
+                    new Date(
+                        a.appointmentDateTime
+                    );
+
+                if(
+                    sameDay(
+                        appointmentDate,
+                        date
+                    )
+                ){
+                    counts[6-offset]++;
+                }
+            });
+    }
+
+    const max=
+        Math.max(
+            ...counts,
+            1
+        );
+
+    chart.innerHTML=
+        counts.map(
+            (count,index)=>`
+
+            <div class="chart-bar-wrap">
+
+                <div
+                    class="chart-bar"
+                    title="${count} appointment(s)"
+                    style="height:${Math.max(4,count/max*100)}%">
+                </div>
+
+                <span class="chart-label">
+                    ${labels[index]}
+                </span>
+
+            </div>
+
+        `
+        ).join("");
+}
+
+function renderUpcoming(){
+
+    const container=
+        document.getElementById(
+            "upcomingAppointments"
+        );
+
+    const now=new Date();
+
+    const list=
+        [...state.appointments]
+        .filter(
+            a=>
+                a.status==="SCHEDULED" &&
+                a.appointmentDateTime &&
+                new Date(
+                    a.appointmentDateTime
+                )>=now
+        )
+        .sort(
+            (a,b)=>
+                new Date(a.appointmentDateTime)-
+                new Date(b.appointmentDateTime)
+        )
+        .slice(0,5);
+
+    if(!list.length){
+
+        container.innerHTML=`
+            <div class="empty-state">
+                ${icon("calendar")}
+                <strong>No upcoming appointments</strong>
+                Schedule a new patient consultation.
+            </div>
+        `;
+
+        return;
+    }
+
+    container.innerHTML=
+        list.map(a=>`
+
+            <div class="appointment-item">
+
+                <div class="entity-avatar">
+                    ${escapeHTML(
+                        initials(
+                            patientName(a)
+                        )
+                    )}
+                </div>
+
+                <div>
+                    <strong>
+                        ${escapeHTML(
+                            patientName(a)
+                        )}
+                    </strong>
+
+                    <p>
+                        Dr.
+                        ${escapeHTML(
+                            doctorName(a)
+                        )}
+                        •
+                        ${escapeHTML(
+                            formatDateTime(
+                                a.appointmentDateTime
+                            )
+                        )}
+                    </p>
+                </div>
+
+                ${statusBadge(a.status)}
+
+                <button class="soft-btn"
+                        onclick="viewAppointment(${a.id})">
+                    View
+                </button>
+
+            </div>
+
+        `).join("");
+}
+
+/* ============================================================
+   PATIENTS
+============================================================ */
+
+async function loadPatients(){
+
+    try{
+
+        const data=
+            await api(
+                "GET",
+                "/api/patients"
+            );
+
+        state.patients=
+            Array.isArray(data)
+            ? data
+            : [];
+
+        document.getElementById(
+            "patientPageCount"
+        ).textContent=
+            state.patients.length;
+
+        renderPatients();
+
+        populateAppointmentSelectors();
+
+    }
+    catch(err){
+        console.error(err);
+    }
+}
+
+function renderPatients(){
+
+    const table=
+        document.getElementById(
+            "patientTable"
+        );
+
+    if(!table)
+        return;
+
+    const search=
+        (
+            document.getElementById(
+                "patientSearch"
+            )?.value || ""
+        ).toLowerCase();
+
+    const gender=
+        document.getElementById(
+            "genderFilter"
+        )?.value || "";
+
+    const sort=
+        document.getElementById(
+            "patientSort"
+        )?.value || "new";
+
+    let list=
+        state.patients.filter(p=>{
+
+            const text=
+                `${p.name||""} ${p.disease||""} ${p.phone||""}`
+                .toLowerCase();
+
+            const matchesSearch=
+                text.includes(search);
+
+            const matchesGender=
+                !gender ||
+                p.gender===gender;
+
+            return(
+                matchesSearch &&
+                matchesGender
+            );
+        });
+
+    if(sort==="name"){
+
+        list.sort(
+            (a,b)=>
+                String(a.name||"")
+                .localeCompare(
+                    String(b.name||"")
+                )
+        );
+    }
+
+    if(sort==="age"){
+
+        list.sort(
+            (a,b)=>
+                Number(b.age||0)-
+                Number(a.age||0)
+        );
+    }
+
+    if(sort==="new"){
+
+        list.sort(
+            (a,b)=>
+                Number(b.id||0)-
+                Number(a.id||0)
+        );
+    }
+
+    if(!list.length){
+
+        table.innerHTML=`
+            <tr>
+                <td colspan="7">
+                    <div class="empty-state">
+                        ${icon("users")}
+                        <strong>No patients found</strong>
+                        Add a patient or adjust your filters.
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+    table.innerHTML=
+        list.map(p=>`
+
+        <tr>
+
+            <td>
+
+                <div class="entity">
+
+                    <div class="entity-avatar">
+                        ${escapeHTML(
+                            initials(p.name)
+                        )}
+                    </div>
+
+                    <div>
+                        <strong>
+                            ${escapeHTML(
+                                p.name || "Unknown"
+                            )}
+                        </strong>
+
+                        <small>
+                            Patient record
+                        </small>
+                    </div>
+
+                </div>
+
+            </td>
+
+            <td>#${escapeHTML(p.id)}</td>
+
+            <td>${escapeHTML(p.age ?? "-")}</td>
+
+            <td>${escapeHTML(p.gender || "-")}</td>
+
+            <td>${escapeHTML(p.phone || "-")}</td>
+
+            <td>
+                <span class="badge badge-blue">
+                    ${escapeHTML(
+                        p.disease || "N/A"
+                    )}
+                </span>
+            </td>
+
+            <td>
+
+                <div class="actions">
+
+                    <button
+                        class="action"
+                        title="View"
+                        onclick="viewPatient(${p.id})">
+                        ${icon("eye")}
+                    </button>
+
+                    <button
+                        class="action"
+                        title="Edit"
+                        onclick="editPatient(${p.id})">
+                        ${icon("edit")}
+                    </button>
+
+                    <button
+                        class="action delete"
+                        title="Delete"
+                        onclick="askDelete('patient',${p.id})">
+                        ${icon("trash")}
+                    </button>
+
+                </div>
+
+            </td>
+
+        </tr>
+
+        `).join("");
+}
+
+const debounceRenderPatients=
+    debounce(renderPatients);
+
+function openPatientModal(){
+
+    document.getElementById(
+        "patientModalTitle"
+    ).textContent=
+        "Register Patient";
+
+    document.getElementById(
+        "patientId"
+    ).value="";
+
+    document.getElementById(
+        "patientName"
+    ).value="";
+
+    document.getElementById(
+        "patientAge"
+    ).value="";
+
+    document.getElementById(
+        "patientGender"
+    ).value="";
+
+    document.getElementById(
+        "patientPhone"
+    ).value="";
+
+    document.getElementById(
+        "patientDisease"
+    ).value="";
+
+    openModal(
+        "patientModal"
+    );
+}
+
+function editPatient(id){
+
+    const p=
+        state.patients.find(
+            x=>Number(x.id)===Number(id)
+        );
+
+    if(!p)
+        return;
+
+    document.getElementById(
+        "patientModalTitle"
+    ).textContent=
+        "Update Patient";
+
+    document.getElementById(
+        "patientId"
+    ).value=p.id;
+
+    document.getElementById(
+        "patientName"
+    ).value=p.name || "";
+
+    document.getElementById(
+        "patientAge"
+    ).value=p.age ?? "";
+
+    document.getElementById(
+        "patientGender"
+    ).value=p.gender || "";
+
+    document.getElementById(
+        "patientPhone"
+    ).value=p.phone || "";
+
+    document.getElementById(
+        "patientDisease"
+    ).value=p.disease || "";
+
+    openModal(
+        "patientModal"
+    );
+}
+
+async function savePatient(){
+
+    const button=
+        document.getElementById(
+            "patientSaveBtn"
+        );
+
+    const id=
+        document.getElementById(
+            "patientId"
+        ).value;
+
+    const payload={
+
+        name:
+            document.getElementById(
+                "patientName"
+            ).value.trim(),
+
+        age:
+            Number(
+                document.getElementById(
+                    "patientAge"
+                ).value
+            ),
+
+        gender:
+            document.getElementById(
+                "patientGender"
+            ).value,
+
+        phone:
+            document.getElementById(
+                "patientPhone"
+            ).value.trim(),
+
+        disease:
+            document.getElementById(
+                "patientDisease"
+            ).value.trim()
+    };
+
+    if(
+        !payload.name ||
+        !payload.age ||
+        !payload.gender ||
+        !payload.phone ||
+        !payload.disease
+    ){
+        toast(
+            "Validation error",
+            "Please complete all required patient fields.",
+            "error"
+        );
+
+        return;
+    }
+
+    setButtonLoading(
+        button,
+        true,
+        "Saving"
+    );
+
+    try{
+
+        if(id){
+
+            await api(
+                "PUT",
+                `/api/patients/${id}`,
+                payload
+            );
+
+            toast(
+                "Patient updated",
+                `${payload.name}'s record was updated successfully.`,
+                "success"
+            );
+
+        }
+        else{
+
+            await api(
+                "POST",
+                "/api/patients",
+                payload
+            );
+
+            toast(
+                "Patient added",
+                `${payload.name} was registered successfully.`,
+                "success"
+            );
+        }
+
+        closeModal(
+            "patientModal"
+        );
+
+        await loadDashboard();
+
+    }
+    finally{
+
+        setButtonLoading(
+            button,
+            false
+        );
+    }
+}
+
+function viewPatient(id){
+
+    const p=
+        state.patients.find(
+            x=>Number(x.id)===Number(id)
+        );
+
+    if(!p)
+        return;
+
+    const patientAppointments=
+        state.appointments.filter(
+            a=>
+                Number(a.patient?.id)===
+                Number(p.id)
+        );
+
+    document.getElementById(
+        "profileAvatar"
+    ).textContent=
+        initials(p.name);
+
+    document.getElementById(
+        "profileName"
+    ).textContent=
+        p.name || "Patient";
+
+    document.getElementById(
+        "profileSubtitle"
+    ).textContent=
+        `Patient #${p.id}`;
+
+    document.getElementById(
+        "profileData"
+    ).innerHTML=`
+
+        <div>
+            <span>AGE</span>
+            <strong>${escapeHTML(p.age ?? "-")}</strong>
+        </div>
+
+        <div>
+            <span>GENDER</span>
+            <strong>${escapeHTML(p.gender || "-")}</strong>
+        </div>
+
+        <div>
+            <span>PHONE</span>
+            <strong>${escapeHTML(p.phone || "-")}</strong>
+        </div>
+
+        <div>
+            <span>CONDITION</span>
+            <strong>${escapeHTML(p.disease || "-")}</strong>
+        </div>
+
+        <div>
+            <span>APPOINTMENTS</span>
+            <strong>${patientAppointments.length}</strong>
+        </div>
+
+        <div>
+            <span>PATIENT ID</span>
+            <strong>#${escapeHTML(p.id)}</strong>
+        </div>
+    `;
+
+    openModal(
+        "profileModal"
+    );
+}
+
+/* ============================================================
+   DOCTORS
+============================================================ */
+
+async function loadDoctors(){
+
+    try{
+
+        const data=
+            await api(
+                "GET",
+                "/api/doctors"
+            );
+
+        state.doctors=
+            Array.isArray(data)
+            ? data
+            : [];
+
+        populateSpecializations();
+
+        renderDoctors();
+
+        populateAppointmentSelectors();
+
+    }
+    catch(err){
+        console.error(err);
+    }
+}
+
+function populateSpecializations(){
+
+    const select=
+        document.getElementById(
+            "specializationFilter"
+        );
+
+    if(!select)
+        return;
+
+    const current=select.value;
+
+    const specs=
+        [
+            ...new Set(
+                state.doctors
+                    .map(
+                        d=>d.specialization
+                    )
+                    .filter(Boolean)
+            )
+        ]
+        .sort();
+
+    select.innerHTML=
+        `<option value="">All specializations</option>`+
+        specs.map(
+            s=>`
+            <option value="${escapeHTML(s)}">
+                ${escapeHTML(s)}
+            </option>
+        `
+        ).join("");
+
+    if(specs.includes(current))
+        select.value=current;
+}
+
+function renderDoctors(){
+
+    const grid=
+        document.getElementById(
+            "doctorGrid"
+        );
+
+    if(!grid)
+        return;
+
+    const search=
+        (
+            document.getElementById(
+                "doctorSearch"
+            )?.value || ""
+        ).toLowerCase();
+
+    const specialization=
+        document.getElementById(
+            "specializationFilter"
+        )?.value || "";
+
+    const minExperience=
+        Number(
+            document.getElementById(
+                "experienceFilter"
+            )?.value || 0
+        );
+
+    const list=
+        state.doctors.filter(d=>{
+
+            const fullName=
+                `${d.firstName||""} ${d.lastName||""}`;
+
+            const text=
+                `${fullName} ${d.specialization||""} ${d.email||""}`
+                .toLowerCase();
+
+            return(
+                text.includes(search) &&
+                (
+                    !specialization ||
+                    d.specialization===specialization
+                ) &&
+                Number(d.experience||0)>=minExperience
+            );
+        });
+
+    if(!list.length){
+
+        grid.innerHTML=`
+            <div class="empty-state"
+                 style="grid-column:1/-1">
+                ${icon("doctor")}
+                <strong>No doctors found</strong>
+                Add a medical professional or adjust filters.
+            </div>
+        `;
+
+        return;
+    }
+
+    grid.innerHTML=
+        list.map(d=>{
+
+            const name=
+                `${d.firstName||""} ${d.lastName||""}`
+                .trim();
+
+            return `
+
+            <div class="doctor-card">
+
+                <span class="availability"
+                      title="Available">
+                </span>
+
+                <div class="doctor-top">
+
+                    <div class="doctor-avatar">
+                        ${escapeHTML(
+                            initials(name)
+                        )}
+                    </div>
+
+                    <div>
+                        <h3>
+                            Dr. ${escapeHTML(
+                                name || "Unknown"
+                            )}
+                        </h3>
+
+                        <div class="speciality">
+                            ${escapeHTML(
+                                d.specialization ||
+                                "General Medicine"
+                            )}
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="doctor-info">
+
+                    <div class="info-cell">
+                        <span>EXPERIENCE</span>
+                        <strong>
+                            ${escapeHTML(
+                                d.experience ?? 0
+                            )} years
+                        </strong>
+                    </div>
+
+                    <div class="info-cell">
+                        <span>QUALIFICATION</span>
+                        <strong>
+                            ${escapeHTML(
+                                d.qualification || "-"
+                            )}
+                        </strong>
+                    </div>
+
+                    <div class="info-cell">
+                        <span>EMAIL</span>
+                        <strong>
+                            ${escapeHTML(
+                                d.email || "-"
+                            )}
+                        </strong>
+                    </div>
+
+                    <div class="info-cell">
+                        <span>PHONE</span>
+                        <strong>
+                            ${escapeHTML(
+                                d.phone || "-"
+                            )}
+                        </strong>
+                    </div>
+
+                </div>
+
+                <div class="doctor-actions">
+
+                    <button class="secondary-btn"
+                            onclick="viewDoctor(${d.id})">
+                        View
+                    </button>
+
+                    <button class="secondary-btn"
+                            onclick="editDoctor(${d.id})">
+                        Edit
+                    </button>
+
+                    <button class="danger-btn"
+                            onclick="askDelete('doctor',${d.id})">
+                        Delete
+                    </button>
+
+                </div>
+
+            </div>
+
+            `;
+        }).join("");
+}
+
+const debounceRenderDoctors=
+    debounce(renderDoctors);
+
+function openDoctorModal(){
+
+    document.getElementById(
+        "doctorModalTitle"
+    ).textContent=
+        "Add Doctor";
+
+    [
+        "doctorId",
+        "doctorFirstName",
+        "doctorLastName",
+        "doctorEmail",
+        "doctorPhone",
+        "doctorSpecialization",
+        "doctorQualification",
+        "doctorExperience",
+        "doctorJoiningDate"
+    ].forEach(id=>{
+        document.getElementById(id)
+            .value="";
+    });
+
+    openModal(
+        "doctorModal"
+    );
+}
+
+function editDoctor(id){
+
+    const d=
+        state.doctors.find(
+            x=>Number(x.id)===Number(id)
+        );
+
+    if(!d)
+        return;
+
+    document.getElementById(
+        "doctorModalTitle"
+    ).textContent=
+        "Update Doctor";
+
+    document.getElementById(
+        "doctorId"
+    ).value=d.id;
+
+    document.getElementById(
+        "doctorFirstName"
+    ).value=d.firstName || "";
+
+    document.getElementById(
+        "doctorLastName"
+    ).value=d.lastName || "";
+
+    document.getElementById(
+        "doctorEmail"
+    ).value=d.email || "";
+
+    document.getElementById(
+        "doctorPhone"
+    ).value=d.phone || "";
+
+    document.getElementById(
+        "doctorSpecialization"
+    ).value=d.specialization || "";
+
+    document.getElementById(
+        "doctorQualification"
+    ).value=d.qualification || "";
+
+    document.getElementById(
+        "doctorExperience"
+    ).value=d.experience ?? "";
+
+    document.getElementById(
+        "doctorJoiningDate"
+    ).value=d.joiningDate || "";
+
+    openModal(
+        "doctorModal"
+    );
+}
+
+async function saveDoctor(){
+
+    const button=
+        document.getElementById(
+            "doctorSaveBtn"
+        );
+
+    const id=
+        document.getElementById(
+            "doctorId"
+        ).value;
+
+    const payload={
+
+        firstName:
+            document.getElementById(
+                "doctorFirstName"
+            ).value.trim(),
+
+        lastName:
+            document.getElementById(
+                "doctorLastName"
+            ).value.trim(),
+
+        email:
+            document.getElementById(
+                "doctorEmail"
+            ).value.trim(),
+
+        phone:
+            document.getElementById(
+                "doctorPhone"
+            ).value.trim(),
+
+        specialization:
+            document.getElementById(
+                "doctorSpecialization"
+            ).value.trim(),
+
+        qualification:
+            document.getElementById(
+                "doctorQualification"
+            ).value.trim(),
+
+        experience:
+            Number(
+                document.getElementById(
+                    "doctorExperience"
+                ).value || 0
+            ),
+
+        joiningDate:
+            document.getElementById(
+                "doctorJoiningDate"
+            ).value
+    };
+
+    if(
+        !payload.firstName ||
+        !payload.lastName ||
+        !payload.email ||
+        !payload.phone ||
+        !payload.specialization ||
+        !payload.qualification
+    ){
+        toast(
+            "Validation error",
+            "Please complete all required doctor fields.",
+            "error"
+        );
+
+        return;
+    }
+
+    setButtonLoading(
+        button,
+        true,
+        "Saving"
+    );
+
+    try{
+
+        if(id){
+
+            await api(
+                "PUT",
+                `/api/doctors/${id}`,
+                payload
+            );
+
+            toast(
+                "Doctor updated",
+                `Dr. ${payload.firstName} ${payload.lastName} was updated successfully.`,
+                "success"
+            );
+
+        }
+        else{
+
+            await api(
+                "POST",
+                "/api/doctors",
+                payload
+            );
+
+            toast(
+                "Doctor added",
+                `Dr. ${payload.firstName} ${payload.lastName} was registered successfully.`,
+                "success"
+            );
+        }
+
+        closeModal(
+            "doctorModal"
+        );
+
+        await loadDashboard();
+
+    }
+    finally{
+
+        setButtonLoading(
+            button,
+            false
+        );
+    }
+}
+
+function viewDoctor(id){
+
+    const d=
+        state.doctors.find(
+            x=>Number(x.id)===Number(id)
+        );
+
+    if(!d)
+        return;
+
+    const name=
+        `${d.firstName||""} ${d.lastName||""}`
+        .trim();
+
+    const appointments=
+        state.appointments.filter(
+            a=>
+                Number(a.doctor?.id)===
+                Number(d.id)
+        );
+
+    document.getElementById(
+        "profileAvatar"
+    ).textContent=
+        initials(name);
+
+    document.getElementById(
+        "profileName"
+    ).textContent=
+        "Dr. "+name;
+
+    document.getElementById(
+        "profileSubtitle"
+    ).textContent=
+        d.specialization || "Medical Professional";
+
+    document.getElementById(
+        "profileData"
+    ).innerHTML=`
+
+        <div>
+            <span>DOCTOR ID</span>
+            <strong>#${escapeHTML(d.id)}</strong>
+        </div>
+
+        <div>
+            <span>EXPERIENCE</span>
+            <strong>
+                ${escapeHTML(d.experience ?? 0)} years
+            </strong>
+        </div>
+
+        <div>
+            <span>QUALIFICATION</span>
+            <strong>
+                ${escapeHTML(d.qualification || "-")}
+            </strong>
+        </div>
+
+        <div>
+            <span>SPECIALIZATION</span>
+            <strong>
+                ${escapeHTML(d.specialization || "-")}
+            </strong>
+        </div>
+
+        <div>
+            <span>EMAIL</span>
+            <strong>
+                ${escapeHTML(d.email || "-")}
+            </strong>
+        </div>
+
+        <div>
+            <span>PHONE</span>
+            <strong>
+                ${escapeHTML(d.phone || "-")}
+            </strong>
+        </div>
+
+        <div>
+            <span>JOINING DATE</span>
+            <strong>
+                ${escapeHTML(d.joiningDate || "-")}
+            </strong>
+        </div>
+
+        <div>
+            <span>APPOINTMENTS</span>
+            <strong>
+                ${appointments.length}
+            </strong>
+        </div>
+    `;
+
+    openModal(
+        "profileModal"
+    );
+}
+
+/* ============================================================
+   APPOINTMENTS
+============================================================ */
+
+async function loadAppointments(){
+
+    try{
+
+        const results=
+            await Promise.all([
+                api(
+                    "GET",
+                    "/api/appointments"
+                ),
+                api(
+                    "GET",
+                    "/api/patients"
+                ),
+                api(
+                    "GET",
+                    "/api/doctors"
+                )
+            ]);
+
+        state.appointments=
+            Array.isArray(results[0])
+            ? results[0]
+            : [];
+
+        state.patients=
+            Array.isArray(results[1])
+            ? results[1]
+            : [];
+
+        state.doctors=
+            Array.isArray(results[2])
+            ? results[2]
+            : [];
+
+        populateAppointmentSelectors();
+
+        renderAppointments();
+
+        updateDashboard();
+
+    }
+    catch(err){
+        console.error(err);
+    }
+}
+
+function patientName(appointment){
+
+    if(appointment.patient?.name)
+        return appointment.patient.name;
+
+    const patient=
+        state.patients.find(
+            p=>
+                Number(p.id)===
+                Number(
+                    appointment.patient?.id
+                )
+        );
+
+    return patient?.name ||
+        `Patient #${appointment.patient?.id ?? "-"}`;
+}
+
+function doctorObject(appointment){
+
+    if(
+        appointment.doctor &&
+        (
+            appointment.doctor.firstName ||
+            appointment.doctor.lastName
+        )
+    ){
+        return appointment.doctor;
+    }
+
+    return state.doctors.find(
+        d=>
+            Number(d.id)===
+            Number(
+                appointment.doctor?.id
+            )
+    ) || appointment.doctor || {};
+}
+
+function doctorName(appointment){
+
+    const d=
+        doctorObject(
+            appointment
+        );
+
+    const name=
+        `${d.firstName||""} ${d.lastName||""}`
+        .trim();
+
+    return name ||
+        `Doctor #${d.id ?? appointment.doctor?.id ?? "-"}`;
+}
+
+function renderAppointments(){
+
+    const table=
+        document.getElementById(
+            "appointmentTable"
+        );
+
+    if(!table)
+        return;
+
+    const search=
+        (
+            document.getElementById(
+                "appointmentSearch"
+            )?.value || ""
+        ).toLowerCase();
+
+    const status=
+        document.getElementById(
+            "statusFilter"
+        )?.value || "";
+
+    const date=
+        document.getElementById(
+            "appointmentDateFilter"
+        )?.value || "";
+
+    const list=
+        [...state.appointments]
+        .filter(a=>{
+
+            const pName=
+                patientName(a)
+                .toLowerCase();
+
+            const dName=
+                doctorName(a)
+                .toLowerCase();
+
+            const matchesSearch=
+                pName.includes(search) ||
+                dName.includes(search);
+
+            const matchesStatus=
+                !status ||
+                a.status===status;
+
+            const matchesDate=
+                !date ||
+                String(
+                    a.appointmentDateTime || ""
+                ).startsWith(date);
+
+            return(
+                matchesSearch &&
+                matchesStatus &&
+                matchesDate
+            );
+        })
+        .sort(
+            (a,b)=>
+                new Date(
+                    b.appointmentDateTime || 0
+                )-
+                new Date(
+                    a.appointmentDateTime || 0
+                )
+        );
+
+    if(!list.length){
+
+        table.innerHTML=`
+            <tr>
+                <td colspan="8">
+                    <div class="empty-state">
+                        ${icon("calendar")}
+                        <strong>No appointments found</strong>
+                        Book an appointment or adjust filters.
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+    table.innerHTML=
+        list.map(a=>{
+
+            const doctor=
+                doctorObject(a);
+
+            return `
+
+            <tr>
+
+                <td>
+                    <strong>#${escapeHTML(a.id)}</strong>
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        patientName(a)
+                    )}
+                </td>
+
+                <td>
+                    Dr.
+                    ${escapeHTML(
+                        doctorName(a)
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        doctor.specialization || "-"
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        dateOnly(
+                            a.appointmentDateTime
+                        )
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        timeOnly(
+                            a.appointmentDateTime
+                        )
+                    )}
+                </td>
+
+                <td>
+                    ${statusBadge(a.status)}
+                </td>
+
+                <td>
+
+                    <div class="actions">
+
+                        <button class="action"
+                                title="View"
+                                onclick="viewAppointment(${a.id})">
+                            ${icon("eye")}
+                        </button>
+
+                        <button class="action"
+                                title="Edit"
+                                onclick="editAppointment(${a.id})">
+                            ${icon("edit")}
+                        </button>
+
+                        ${
+                            a.status!=="COMPLETED"
+                            ?
+                            `
+                            <button
+                                class="action"
+                                title="Mark completed"
+                                onclick="changeAppointmentStatus(${a.id},'COMPLETED')">
+                                ${icon("check")}
+                            </button>
+                            `
+                            :
+                            ""
+                        }
+
+                        ${
+                            a.status!=="CANCELLED"
+                            ?
+                            `
+                            <button
+                                class="action"
+                                title="Cancel"
+                                onclick="changeAppointmentStatus(${a.id},'CANCELLED')">
+                                ${icon("x")}
+                            </button>
+                            `
+                            :
+                            ""
+                        }
+
+                        <button
+                            class="action delete"
+                            title="Delete"
+                            onclick="askDelete('appointment',${a.id})">
+                            ${icon("trash")}
+                        </button>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+            `;
+        }).join("");
+}
+
+const debounceRenderAppointments=
+    debounce(renderAppointments);
+
+function populateAppointmentSelectors(){
+
+    const patient=
+        document.getElementById(
+            "appointmentPatient"
+        );
+
+    const doctor=
+        document.getElementById(
+            "appointmentDoctor"
+        );
+
+    if(!patient || !doctor)
+        return;
+
+    patient.innerHTML=
+        `<option value="">Select patient</option>`+
+        state.patients.map(
+            p=>`
+            <option value="${p.id}">
+                #${p.id} — ${escapeHTML(
+                    p.name || "Unknown"
+                )}
+            </option>
+        `
+        ).join("");
+
+    doctor.innerHTML=
+        `<option value="">Select doctor</option>`+
+        state.doctors.map(d=>`
+
+            <option value="${d.id}">
+                Dr. ${escapeHTML(d.firstName || "")}
+                ${escapeHTML(d.lastName || "")}
+                — ${escapeHTML(d.specialization || "")}
+            </option>
+
+        `).join("");
+}
+
+async function openAppointmentModal(){
+
+    if(
+        !state.patients.length ||
+        !state.doctors.length
+    ){
+        try{
+
+            const results=
+                await Promise.all([
+                    api(
+                        "GET",
+                        "/api/patients"
+                    ),
+                    api(
+                        "GET",
+                        "/api/doctors"
+                    )
+                ]);
+
+            state.patients=
+                Array.isArray(results[0])
+                ? results[0]
+                : [];
+
+            state.doctors=
+                Array.isArray(results[1])
+                ? results[1]
+                : [];
+
+        }
+        catch{
+            return;
+        }
+    }
+
+    populateAppointmentSelectors();
+
+    document.getElementById(
+        "appointmentModalTitle"
+    ).textContent=
+        "Book Appointment";
+
+    document.getElementById(
+        "appointmentId"
+    ).value="";
+
+    document.getElementById(
+        "appointmentPatient"
+    ).value="";
+
+    document.getElementById(
+        "appointmentDoctor"
+    ).value="";
+
+    document.getElementById(
+        "appointmentDateTime"
+    ).value="";
+
+    document.getElementById(
+        "appointmentStatus"
+    ).value="SCHEDULED";
+
+    openModal(
+        "appointmentModal"
+    );
+}
+
+function editAppointment(id){
+
+    const a=
+        state.appointments.find(
+            x=>Number(x.id)===Number(id)
+        );
+
+    if(!a)
+        return;
+
+    populateAppointmentSelectors();
+
+    document.getElementById(
+        "appointmentModalTitle"
+    ).textContent=
+        "Update Appointment";
+
+    document.getElementById(
+        "appointmentId"
+    ).value=a.id;
+
+    document.getElementById(
+        "appointmentPatient"
+    ).value=
+        a.patient?.id || "";
+
+    document.getElementById(
+        "appointmentDoctor"
+    ).value=
+        a.doctor?.id || "";
+
+    document.getElementById(
+        "appointmentDateTime"
+    ).value=
+        a.appointmentDateTime
+        ? a.appointmentDateTime.substring(0,16)
+        : "";
+
+    document.getElementById(
+        "appointmentStatus"
+    ).value=
+        a.status || "SCHEDULED";
+
+    openModal(
+        "appointmentModal"
+    );
+}
+
+async function saveAppointment(){
+
+    const button=
+        document.getElementById(
+            "appointmentSaveBtn"
+        );
+
+    const id=
+        document.getElementById(
+            "appointmentId"
+        ).value;
+
+    const patientId=
+        Number(
+            document.getElementById(
+                "appointmentPatient"
+            ).value
+        );
+
+    const doctorId=
+        Number(
+            document.getElementById(
+                "appointmentDoctor"
+            ).value
+        );
+
+    const appointmentDateTime=
+        document.getElementById(
+            "appointmentDateTime"
+        ).value;
+
+    const status=
+        document.getElementById(
+            "appointmentStatus"
+        ).value;
+
+    if(
+        !patientId ||
+        !doctorId ||
+        !appointmentDateTime
+    ){
+        toast(
+            "Validation error",
+            "Patient, doctor and appointment date are required.",
+            "error"
+        );
+
+        return;
+    }
+
+    /*
+      This payload intentionally matches
+      your existing Spring Boot entity structure.
+    */
+    const payload={
+
+        patient:{
+            id:patientId
+        },
+
+        doctor:{
+            id:doctorId
+        },
+
+        appointmentDateTime:
+            appointmentDateTime,
+
+        status:
+            status
+    };
+
+    setButtonLoading(
+        button,
+        true,
+        "Saving"
+    );
+
+    try{
+
+        if(id){
+
+            await api(
+                "PUT",
+                `/api/appointments/${id}`,
+                payload
+            );
+
+            toast(
+                "Appointment updated",
+                "Appointment information was updated successfully.",
+                "success"
+            );
+
+        }
+        else{
+
+            await api(
+                "POST",
+                "/api/appointments",
+                payload
+            );
+
+            toast(
+                "Appointment booked",
+                "The consultation was scheduled successfully.",
+                "success"
+            );
+        }
+
+        closeModal(
+            "appointmentModal"
+        );
+
+        await loadDashboard();
+
+    }
+    finally{
+
+        setButtonLoading(
+            button,
+            false
+        );
+    }
+}
+
+async function changeAppointmentStatus(
+    id,
+    status
+){
+
+    const a=
+        state.appointments.find(
+            x=>Number(x.id)===Number(id)
+        );
+
+    if(!a)
+        return;
+
+    const payload={
+
+        patient:{
+            id:a.patient?.id
+        },
+
+        doctor:{
+            id:a.doctor?.id
+        },
+
+        appointmentDateTime:
+            a.appointmentDateTime,
+
+        status
+    };
+
+    try{
+
+        await api(
+            "PUT",
+            `/api/appointments/${id}`,
+            payload
+        );
+
+        toast(
+            "Appointment updated",
+            `Status changed to ${status}.`,
+            "success"
+        );
+
+        await loadDashboard();
+
+    }
+    catch(err){
+        console.error(err);
+    }
+}
+
+function viewAppointment(id){
+
+    const a=
+        state.appointments.find(
+            x=>Number(x.id)===Number(id)
+        );
+
+    if(!a)
+        return;
+
+    const doctor=
+        doctorObject(a);
+
+    document.getElementById(
+        "profileAvatar"
+    ).textContent="A";
+
+    document.getElementById(
+        "profileName"
+    ).textContent=
+        `Appointment #${a.id}`;
+
+    document.getElementById(
+        "profileSubtitle"
+    ).textContent=
+        a.status || "Appointment";
+
+    document.getElementById(
+        "profileData"
+    ).innerHTML=`
+
+        <div>
+            <span>PATIENT</span>
+            <strong>
+                ${escapeHTML(
+                    patientName(a)
+                )}
+            </strong>
+        </div>
+
+        <div>
+            <span>DOCTOR</span>
+            <strong>
+                Dr. ${escapeHTML(
+                    doctorName(a)
+                )}
+            </strong>
+        </div>
+
+        <div>
+            <span>SPECIALIZATION</span>
+            <strong>
+                ${escapeHTML(
+                    doctor.specialization || "-"
+                )}
+            </strong>
+        </div>
+
+        <div>
+            <span>STATUS</span>
+            <strong>
+                ${escapeHTML(
+                    a.status || "-"
+                )}
+            </strong>
+        </div>
+
+        <div>
+            <span>DATE</span>
+            <strong>
+                ${escapeHTML(
+                    dateOnly(
+                        a.appointmentDateTime
+                    )
+                )}
+            </strong>
+        </div>
+
+        <div>
+            <span>TIME</span>
+            <strong>
+                ${escapeHTML(
+                    timeOnly(
+                        a.appointmentDateTime
+                    )
+                )}
+            </strong>
+        </div>
+    `;
+
+    openModal(
+        "profileModal"
+    );
+}
+
+/* ============================================================
+   DELETE
+============================================================ */
+
+function askDelete(type,id){
+
+    state.deleteAction={
+        type,
+        id
+    };
+
+    document.getElementById(
+        "deleteMessage"
+    ).textContent=
+        `This will permanently delete ${type} #${id}. This action cannot be undone.`;
+
+    openModal(
+        "deleteModal"
+    );
+}
+
+async function confirmDelete(){
+
+    const action=
+        state.deleteAction;
+
+    if(!action)
+        return;
+
+    const endpoints={
+        patient:"patients",
+        doctor:"doctors",
+        appointment:"appointments"
+    };
+
+    try{
+
+        await api(
+            "DELETE",
+            `/api/${endpoints[action.type]}/${action.id}`
+        );
+
+        closeModal(
+            "deleteModal"
+        );
+
+        toast(
+            "Record deleted",
+            `${action.type} #${action.id} was deleted successfully.`,
+            "success"
+        );
+
+        state.deleteAction=null;
+
+        await loadDashboard();
+
+    }
+    catch(err){
+        console.error(err);
+    }
+}
+
+/* ============================================================
+   ANALYTICS
+============================================================ */
+
+function renderAnalytics(){
+
+    const total=
+        state.appointments.length;
+
+    const scheduled=
+        state.appointments.filter(
+            a=>a.status==="SCHEDULED"
+        ).length;
+
+    const completed=
+        state.appointments.filter(
+            a=>a.status==="COMPLETED"
+        ).length;
+
+    const cancelled=
+        state.appointments.filter(
+            a=>a.status==="CANCELLED"
+        ).length;
+
+    document.getElementById(
+        "analyticsTotal"
+    ).textContent=total;
+
+    document.getElementById(
+        "analyticsScheduled"
+    ).textContent=scheduled;
+
+    document.getElementById(
+        "analyticsCompleted"
+    ).textContent=completed;
+
+    document.getElementById(
+        "analyticsCancelled"
+    ).textContent=cancelled;
+
+    document.getElementById(
+        "analyticsPatients"
+    ).textContent=
+        state.patients.length;
+
+    document.getElementById(
+        "analyticsDoctors"
+    ).textContent=
+        state.doctors.length;
+
+    document.getElementById(
+        "analyticsAppointments"
+    ).textContent=
+        total;
+
+    document.getElementById(
+        "analyticsCompletionRate"
+    ).textContent=
+        total
+        ? Math.round(
+            completed/total*100
+          )+"%"
+        : "0%";
+
+    renderActivityBars();
+}
+
+function renderActivityBars(){
+
+    const container=
+        document.getElementById(
+            "activityBars"
+        );
+
+    const days=[
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+    ];
+
+    const scheduled=
+        Array(7).fill(0);
+
+    const completed=
+        Array(7).fill(0);
+
+    state.appointments.forEach(a=>{
+
+        if(!a.appointmentDateTime)
+            return;
+
+        const day=
+            new Date(
+                a.appointmentDateTime
+            ).getDay();
+
+        if(a.status==="COMPLETED")
+            completed[day]++;
+        else
+            scheduled[day]++;
+    });
+
+    const max=
+        Math.max(
+            ...scheduled,
+            ...completed,
+            1
+        );
+
+    container.innerHTML=
+        days.map(
+            (day,index)=>`
+
+            <div class="activity-col">
+
+                <span
+                    title="Scheduled / other: ${scheduled[index]}"
+                    style="height:${Math.max(3,scheduled[index]/max*100)}%">
+                </span>
+
+                <span
+                    title="Completed: ${completed[index]}"
+                    style="height:${Math.max(3,completed[index]/max*100)}%">
+                </span>
+
+                <small>${day}</small>
+
+            </div>
+
+        `
+        ).join("");
+}
+
+/* ============================================================
+   MODAL
+============================================================ */
+
+function openModal(id){
+
+    document.getElementById(id)
+        .classList.add("show");
+
+    document.body.style.overflow=
+        "hidden";
+}
+
+function closeModal(id){
+
+    document.getElementById(id)
+        .classList.remove("show");
+
+    if(
+        !document.querySelector(
+            ".modal.show"
+        )
+    ){
+        document.body.style.overflow="";
+    }
+}
+
+document.querySelectorAll(
+    ".modal"
+).forEach(modal=>{
+
+    modal.addEventListener(
+        "mousedown",
+        event=>{
+
+            if(event.target===modal)
+                closeModal(modal.id);
+        }
+    );
+});
+
+document.addEventListener(
+    "keydown",
+    event=>{
+
+        if(event.key==="Escape"){
+
+            document.querySelectorAll(
+                ".modal.show"
+            ).forEach(
+                modal=>closeModal(
+                    modal.id
+                )
+            );
+
+            toggleSidebar(false);
+        }
+    }
+);
+
+/* ============================================================
+   TOAST
+============================================================ */
+
+function toast(
+    title,
+    message="",
+    type="success"
+){
+
+    const box=
+        document.getElementById(
+            "toastBox"
+        );
+
+    const item=
+        document.createElement(
+            "div"
+        );
+
+    item.className=
+        `toast ${type}`;
+
+    item.innerHTML=`
+
+        <div class="toast-icon">
+
+            ${
+                type==="error"
+                ? icon("x")
+                : icon("check")
+            }
+
+        </div>
+
+        <div>
+            <strong>
+                ${escapeHTML(title)}
+            </strong>
+
+            <p>
+                ${escapeHTML(message)}
+            </p>
+        </div>
+    `;
+
+    box.appendChild(item);
+
+    setTimeout(()=>{
+
+        item.style.opacity="0";
+        item.style.transform=
+            "translateX(25px)";
+        item.style.transition=".25s";
+
+        setTimeout(
+            ()=>item.remove(),
+            260
+        );
+
+    },3200);
+}
+
+/* ============================================================
+   THEME
+============================================================ */
+
+function toggleTheme(){
+
+    const dark=
+        document.body.classList
+            .toggle("dark");
+
+    localStorage.setItem(
+        "mednexus-theme",
+        dark ? "dark" : "light"
+    );
+
+    updateThemeIcon();
+}
+
+function updateThemeIcon(){
+
+    const use=
+        document.querySelector(
+            "#themeIcon use"
+        );
+
+    if(!use)
+        return;
+
+    use.setAttribute(
+        "href",
+        document.body.classList
+            .contains("dark")
+        ? "#i-sun"
+        : "#i-moon"
+    );
+}
+
+if(
+    localStorage.getItem(
+        "mednexus-theme"
+    )==="dark"
+){
+    document.body.classList
+        .add("dark");
+}
+
+updateThemeIcon();
+
+/* ============================================================
+   DATE / GREETING
+============================================================ */
+
+function updateDate(){
+
+    const now=
+        new Date();
+
+    document.getElementById(
+        "currentDate"
+    ).textContent=
+        now.toLocaleDateString(
+            undefined,
+            {
+                weekday:"short",
+                day:"numeric",
+                month:"short"
+            }
+        );
+
+    document.getElementById(
+        "heroDateTime"
+    ).textContent=
+        now.toLocaleString(
+            undefined,
+            {
+                weekday:"long",
+                day:"numeric",
+                month:"long",
+                year:"numeric",
+                hour:"2-digit",
+                minute:"2-digit"
+            }
+        );
+
+    updateGreeting();
+}
+
+function updateGreeting(){
+
+    const hour=
+        new Date().getHours();
+
+    let greeting=
+        "Good evening";
+
+    if(hour<12)
+        greeting="Good morning";
+    else if(hour<17)
+        greeting="Good afternoon";
+
+    const user=
+        state.username ||
+        "Administrator";
+
+    const el=
+        document.getElementById(
+            "greeting"
+        );
+
+    if(el)
+        el.textContent=
+            `${greeting}, ${user}`;
+}
+
+updateDate();
+
+setInterval(
+    updateDate,
+    60000
+);
+
+/* ============================================================
+   GLOBAL SEARCH
+============================================================ */
+
+function globalSearch(event){
+
+    if(event.key!=="Enter")
+        return;
+
+    const value=
+        event.target.value
+            .trim();
+
+    if(!value)
+        return;
+
+    navigateByName(
+        "patients"
+    );
+
+    document.getElementById(
+        "patientSearch"
+    ).value=value;
+
+    renderPatients();
+}
+
+/* ============================================================
+   LOGIN ENTER
+============================================================ */
+
+document.getElementById(
+    "loginPassword"
+).addEventListener(
+    "keydown",
+    event=>{
+
+        if(event.key==="Enter")
+            login();
+    }
+);
+
+document.getElementById(
+    "loginUsername"
+).addEventListener(
+    "keydown",
+    event=>{
+
+        if(event.key==="Enter")
+            document.getElementById(
+                "loginPassword"
+            ).focus();
+    }
+);
+</script>
+
+</body>
+</html>
