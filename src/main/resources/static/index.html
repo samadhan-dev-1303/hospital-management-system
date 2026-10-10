@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:wght@500;600&display=swap" rel="stylesheet">
-<title>Inamdar | Smart Hospital Management</title>
+<title>MedNexus | Smart Hospital Management</title>
 
 <style>
 /* ============================================================
@@ -2202,124 +2201,6 @@ body.dark .doctor-avatar{
         transition-duration:.01ms!important;
     }
 }
-
-/* ============================================================
-   REDESIGN LAYER — sirf look badla hai. HTML ids, JS aur API calls same hain.
-============================================================ */
-:root{
-  --primary:#0f766e; --primary2:#14b8a6; --primary3:#5eead4;
-  --success:#15803d; --warning:#b45309; --danger:#c2410c;
-  --bg:#f2f5f3; --surface:#ffffff; --surface2:#f7f9f8; --surface3:#e9f0ed;
-  --text:#10201e; --muted:#5d716d; --border:#d9e3df;
-  --sidebar:#0b2926; --sidebar2:#10373a;
-  --shadow:0 1px 2px rgba(16,32,30,.06); --shadow-lg:0 18px 50px rgba(16,32,30,.16);
-  --radius:10px; --sidebar-width:248px;
-  --serif:"Newsreader",Georgia,"Times New Roman",serif;
-}
-body.dark{
-  --bg:#08191a; --surface:#0e2425; --surface2:#112b2c; --surface3:#163536;
-  --text:#e4f0ed; --muted:#8fa9a4; --border:#1f3f40;
-  --shadow:0 1px 2px rgba(0,0,0,.3); --shadow-lg:0 18px 50px rgba(0,0,0,.45);
-}
-body{font-family:"IBM Plex Sans","Segoe UI",Roboto,Arial,sans-serif;font-size:14px;line-height:1.5}
-:focus-visible{outline:2px solid var(--primary2);outline-offset:2px}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-
-/* Surfaces: flat, bordered, one radius */
-body .card,body .stat,body .doctor-card,body .modal-card,body .table-wrap,
-body .appointment-item,body .info-cell,body .profile-banner{
-  border:1px solid var(--border);border-radius:var(--radius);box-shadow:none;background:var(--surface)}
-body .modal-card{box-shadow:var(--shadow-lg)}
-body .card-head{border-bottom:1px solid var(--border)}
-
-/* Sidebar: deep clinical green, active item marked by a left bar */
-body .sidebar{background:var(--sidebar);border-right:1px solid rgba(255,255,255,.05)}
-body .sidebar-brand strong,body .login-brand strong{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:0}
-body .brand-mark{background:var(--primary2);border-radius:10px;box-shadow:none;color:#06201d}
-body .nav-label{font-size:11px;letter-spacing:.4px;text-transform:none;color:#7fa7a1;font-weight:600}
-body .nav-btn{border-radius:8px;color:#bcd6d1;position:relative;transition:background .15s,color .15s}
-body .nav-btn:hover{background:rgba(255,255,255,.06);color:#fff}
-body .nav-btn.active{background:rgba(94,234,212,.12);color:#fff;box-shadow:none}
-body .nav-btn.active::before{content:"";position:absolute;left:-12px;top:8px;bottom:8px;width:3px;border-radius:0 3px 3px 0;background:var(--primary3)}
-body .sidebar-profile{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:10px}
-
-/* Top bar */
-body .topbar{background:color-mix(in srgb,var(--surface) 92%,transparent);border-bottom:1px solid var(--border);box-shadow:none;backdrop-filter:blur(8px)}
-body .search-box,body .global-search,body .filter-input,body .filter-select,body .form-control{
-  border:1px solid var(--border);border-radius:8px;background:var(--surface2);color:var(--text)}
-body .form-control:focus,body .filter-input:focus,body .filter-select:focus{
-  border-color:var(--primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 18%,transparent);outline:none}
-body .circle-btn{border:1px solid var(--border);background:var(--surface);border-radius:8px;box-shadow:none}
-
-/* Page headings in serif */
-body .page-title,body .page-heading h1,body .page-heading h2{font-family:var(--serif);font-weight:600;letter-spacing:-.4px}
-body .page-heading h1,body .page-title{font-size:30px}
-
-/* Hero: calm slab with an ECG baseline, the one memorable moment */
-body .hero{background:var(--sidebar);border-radius:var(--radius);border:0;color:#e9f6f3;position:relative;overflow:hidden}
-body .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:44px;opacity:.35;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='44' viewBox='0 0 320 44'%3E%3Cpath d='M0 28H110L122 28 130 8 140 38 148 22 156 28H320' fill='none' stroke='%235eead4' stroke-width='1.6'/%3E%3C/svg%3E") repeat-x}
-body .hero h1,body .hero h2,body .hero-text h1,body #greeting{font-family:var(--serif);font-weight:500;letter-spacing:-.5px}
-body .hero-label,body .hero-time{color:#9cc4bd}
-
-/* Stats */
-body .stat{padding:18px 20px}
-body .stat-icon{border-radius:8px}
-body .stat h2,body .stat strong,body .stat-top+*{font-variant-numeric:tabular-nums}
-body .trend{font-weight:600}
-
-/* Buttons */
-body .primary-btn{background:var(--primary);color:#fff;border:0;border-radius:8px;box-shadow:none;font-weight:600;transition:background .15s}
-body .primary-btn:hover{background:#0b5f58;transform:none}
-body .secondary-btn,body .soft-btn{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:8px;box-shadow:none}
-body .secondary-btn:hover,body .soft-btn:hover{background:var(--surface3)}
-body .danger-btn{background:transparent;color:var(--danger);border:1px solid color-mix(in srgb,var(--danger) 40%,transparent);border-radius:8px}
-body .danger-btn:hover{background:color-mix(in srgb,var(--danger) 10%,transparent)}
-
-/* Tables */
-body table{border-collapse:collapse}
-body th{font-size:12px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--muted);background:var(--surface2);border-bottom:1px solid var(--border)}
-body td{border-bottom:1px solid var(--border)}
-body tbody tr:hover{background:var(--surface2)}
-
-/* Badges: tinted text, no loud fills */
-body .badge{border-radius:6px;font-weight:600;font-size:12px;padding:3px 9px}
-body .badge-green{background:#dcf5e6;color:#14532d}
-body .badge-blue{background:#d6efec;color:#0b4f49}
-body .badge-orange{background:#fdecc8;color:#7a3e07}
-body .badge-red{background:#fde0d6;color:#8f2a0a}
-body.dark .badge-green{background:#123a26;color:#86efac}
-body.dark .badge-blue{background:#0f3b39;color:#5eead4}
-body.dark .badge-orange{background:#3d2b0e;color:#fcd34d}
-body.dark .badge-red{background:#431b10;color:#fdba9b}
-
-/* Avatars & doctor cards */
-body .avatar,body .doctor-avatar,body .entity-avatar,body .profile-avatar,body .top-avatar{
-  background:var(--primary);color:#fff;border-radius:50%;box-shadow:none}
-body .doctor-card:hover{border-color:var(--primary)}
-
-/* Console + toasts */
-body .console{background:#071a18;border:1px solid #14403b;border-radius:var(--radius)}
-body .console-output{font-family:"IBM Plex Mono",Consolas,monospace}
-body .toast{border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow-lg);background:var(--surface);color:var(--text)}
-
-/* Login */
-body #loginPage{background:#071e1c}
-body .login-art{background:linear-gradient(160deg,#071e1c,#0b2926 60%,#0f3a3a)}
-body .glow{display:none}
-body .login-grid{opacity:.05}
-body .login-content h1{font-family:var(--serif);font-weight:500;letter-spacing:-2px;line-height:1.02}
-body .login-content h1 span{background:none;color:var(--primary3);-webkit-text-fill-color:var(--primary3)}
-body .eyebrow{border-radius:6px;letter-spacing:.3px;text-transform:none;color:#9cecdf}
-body .login-feature{border-radius:8px}
-body .login-side{background:#f2f5f3}
-body .login-card{background:#fff;border:1px solid #d9e3df;border-radius:14px;box-shadow:0 20px 60px rgba(11,41,38,.1);backdrop-filter:none}
-body .login-card h2{font-family:var(--serif);font-weight:600;letter-spacing:-.5px;font-size:34px}
-body .login-card .secure{color:var(--primary);letter-spacing:0;text-transform:none}
-body .field-wrap{border-radius:8px;border-color:#d0dcd8;background:#fff}
-body .field-wrap:focus-within{border-color:var(--primary);box-shadow:0 0 0 3px rgba(15,118,110,.15)}
-body .signin{background:var(--primary);border-radius:8px;box-shadow:none;font-weight:600}
-body .signin:hover{background:#0b5f58}
 </style>
 </head>
 

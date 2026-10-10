@@ -41,3 +41,14 @@ A full-stack web application built using **Spring Boot**, **MySQL**, and **Sprin
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/samadhan-dev-1303/hospital-management-system.git
+   
+## 📸 Screenshots
+
+### 🔐 Login Page
+![Login Page](screenshots/login.png)
+
+### 📊 Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### 📋 Patient Response
+![Patient Response](screenshots/patient-response.png)
