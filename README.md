@@ -40,4 +40,4 @@ A full-stack web application built using **Spring Boot**, **MySQL**, and **Sprin
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/hospital-management-system.git
+   git clone https://github.com/samadhan-dev-1303/hospital-management-system.git
